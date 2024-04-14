@@ -31,12 +31,27 @@ The install command reads the composer.json file from the directory, resolves th
 composer install
 ```
 
-### 3. Migrate and seed database
+### 3. Make a copy of .env file for development
+```
+cp .env.example .env
+```
+
+## 4. Generate APP Key for encryption
+```
+php artisan key:generate
+```
+
+### 4. Prepare Database, Migrate and seed
+Create database sqlite for development
+```
+touch database/database.sqlite
+```
+run the migration
 ```
 php artisan migrate:fresh --seed
 ```
 
-### 4. Rollup PHP Dev Server & Run NPM command
+### 5. Rollup PHP Dev Server & Run NPM command
 roll up the PHP Development Server
 ```
 php artisan serve
@@ -47,4 +62,4 @@ npm install & npm run dev
 ```
 
 
-### 4. Happy Coding !!
+### Happy Coding !!
