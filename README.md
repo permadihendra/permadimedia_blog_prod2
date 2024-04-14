@@ -17,11 +17,11 @@ I was built this template for helping with faster development setup and can jump
 ### 1. Clone this repository
 clone with ssh 
 ```
-git@github.com:permadihendra/starter-template-bootstrap-laravel.git
+git clone git@github.com:permadihendra/starter-template-bootstrap-laravel.git new-directory-name
 ```
 or Clone with https
 ```
-https://github.com/permadihendra/starter-template-bootstrap-laravel.git
+git clone https://github.com/permadihendra/starter-template-bootstrap-laravel.git new-directory-name
 ```
 
 
