@@ -22,4 +22,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 // Category Controller
-Route::resource('categories' ,CategoryController::class);
+Route::resource('categories' ,CategoryController::class)->only([
+    'index', 'store', 'update', 'destroy',
+]);

@@ -4,16 +4,31 @@
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item active">Category</li>
         </ol>
-
-        <div class="row mb-2" data-bs-toggle="modal" data-bs-target="#modalCreate"">
-            <div class="col">
-                <button class="btn btn-success">Create</button>
+        @error('name')
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                {{ $message }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-        </div>
+        @enderror
 
-        <x-partial.modal-create-category>
-            <p>this is modal static</p>
-        </x-partial.modal-create-category>
+        <x-partial.modal-create title="Create Category" dataTarget="modalCreate">
+            <form action="{{ url('categories') }}" method="POST">
+                @csrf
+                <div class="mb-3 row">
+                    <label for="name" class="col-sm-4 col-form-label">Category Name</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="name" name="name">
+                    </div>
+
+                </div>
+
+                <div class="text-end">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-success">Save</button>
+                </div>
+            </form>
+
+        </x-partial.modal-create>
 
         <div class="card mb-4">
             <div class="card-body">
