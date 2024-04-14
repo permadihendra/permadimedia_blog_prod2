@@ -10,7 +10,8 @@
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     {{-- Inluce Vite Asset Bundling --}}
-    @vite(['resources/scss/blog-styles.scss', 'resources/js/blog-app.js'])
+    {{-- Default Bootsstrap CSS and JS --}}
+    @vite(['resources/scss/bootstrap.scss', 'resources/js/bootstrap.js'])
 
 </head>
 
