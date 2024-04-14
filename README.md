@@ -12,12 +12,39 @@ I was built this template for helping with faster development setup and can jump
 3. [Startbootstrap - Blog Template](https://github.com/startbootstrap/startbootstrap-blog-home)
 4. [Startbootstrap - SB Admin](https://github.com/startbootstrap/startbootstrap-sb-admin)
 
-# How to use this template
+## How to use this template
 
-## 1. Clone this repository
+### 1. Clone this repository
+clone with ssh 
+```
+git@github.com:permadihendra/starter-template-bootstrap-laravel.git
+```
+or Clone with https
+```
+https://github.com/permadihendra/starter-template-bootstrap-laravel.git
+```
 
-## 2. Run Composer Require
 
-## 3. Run NPM
+### 2. Run Composer Install
+The install command reads the composer.json file from the directory, resolves the dependencies, and installs them into lravel's vendor folder
+```
+composer install
+```
 
-## 4. Happy Coding !!
+### 3. Migrate and seed database
+```
+php artisan migrate:fresh --seed
+```
+
+### 4. Rollup PHP Dev Server & Run NPM command
+roll up the PHP Development Server
+```
+php artisan serve
+```
+install node dependencies and run development mode
+```
+npm install & npm run dev
+```
+
+
+### 4. Happy Coding !!
