@@ -36,12 +36,12 @@ composer install
 cp .env.example .env
 ```
 
-## 4. Generate APP Key for encryption
+### 4. Generate APP Key for encryption
 ```
 php artisan key:generate
 ```
 
-### 4. Prepare Database, Migrate and seed
+### 5. Prepare Database, Migrate and seed
 Create database sqlite for development
 ```
 touch database/database.sqlite
@@ -51,7 +51,7 @@ run the migration
 php artisan migrate:fresh --seed
 ```
 
-### 5. Rollup PHP Dev Server & Run NPM command
+### 6. Rollup PHP Dev Server & Run NPM command
 roll up the PHP Development Server
 ```
 php artisan serve
