@@ -2,7 +2,8 @@
     <div class="sb-sidenav-menu">
         <div class="nav">
             <div class="sb-sidenav-menu-heading">MENU</div>
-            <a class="nav-link" href="index.html">
+            <a class="nav-link @if (request()->segment(1) === 'dashboard') {{ 'active' }} @endif"
+                href="{{ url('dashboard') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                 Dashboard
             </a>
@@ -11,7 +12,8 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-newspaper"></i></div>
                 Articles
             </a>
-            <a class="nav-link" href="index.html">
+            <a class="nav-link @if (request()->segment(1) === 'categories') {{ 'active' }} @endif"
+                href="{{ url('categories') }}">
                 <div class="sb-nav-link-icon"><i class="fas fa-folder"></i></div>
                 Categories
             </a>
