@@ -16,7 +16,7 @@ class CategoryPage extends Component
     public $name;
 
     public function boot(){
-        $this->categories = Category::get();
+        $this->categories = Category::latest()->get();
     }
 
     public function store(){
@@ -27,6 +27,8 @@ class CategoryPage extends Component
         $data['slug'] = Str::slug($this->name);
 
         Category::create($data);
+
+        session()->flash('success', 'Category created sucessfully.');
 
         return $this->redirect('categories', navigate: true);
     }

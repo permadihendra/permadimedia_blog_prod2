@@ -3,12 +3,12 @@
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Category</li>
     </ol>
-    {{-- @error('categoryName')
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ $message }}
+    @if (session('success'))
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-    @enderror --}}
+    @endif
 
     <x-partial.modal-create title="Create Category" dataTarget="modalCreate">
         <form wire:submit="store">
