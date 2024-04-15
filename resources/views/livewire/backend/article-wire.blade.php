@@ -54,12 +54,13 @@
                         <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $article->title }}</td>
-                            <td>{{ $article->category_id }}</td>
+                            <td>{{ $article->category->name }}</td>
                             <td>{{ $article->status }}</td>
                             <td>{{ $article->publish_date }}</td>
                             <td>{{ $article->updated_at }}</td>
                             <td>
                                 <div>
+                                    <button class="btn btn-outline-secondary">Detail</button>
                                     <button wire:click="edit({{ $article->id }})" class="btn btn-outline-primary"
                                         data-bs-toggle="modal" data-bs-target="#editarticle">Edit</button>
                                     <button type="button" wire:click="delete({{ $article->id }})"
