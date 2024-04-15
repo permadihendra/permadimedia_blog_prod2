@@ -29,42 +29,48 @@
             <table id="datatablesSimple">
                 <thead>
                     <tr>
-                        <th>id</th>
-                        <th>Category Name</th>
-                        <th>Slug</th>
-                        <th>Created at</th>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Publish Date</th>
+                        <th>Updated at</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tfoot>
                     <tr>
-                        <th>id</th>
-                        <th>Category Name</th>
-                        <th>Slug</th>
-                        <th>Created at</th>
+                        <th>No</th>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Publish Date</th>
+                        <th>Updated at</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>
                 <tbody>
-                    {{-- @foreach ($categories as $category)
+                    @foreach ($articles as $article)
                         <tr>
                             <td>{{ $loop->iteration }}</td>
-                            <td>{{ $category->name }}</td>
-                            <td>{{ $category->slug }}</td>
-                            <td>{{ $category->created_at }}</td>
+                            <td>{{ $article->title }}</td>
+                            <td>{{ $article->category_id }}</td>
+                            <td>{{ $article->status }}</td>
+                            <td>{{ $article->publish_date }}</td>
+                            <td>{{ $article->updated_at }}</td>
                             <td>
                                 <div>
-                                    <button wire:click="edit({{ $category->id }})" class="btn btn-outline-primary"
-                                        data-bs-toggle="modal" data-bs-target="#editCategory">Edit</button>
-                                    <button type="button" wire:click="delete({{ $category->id }})"
-                                        wire:confirm ="Are you sure want to delete this category ? : {{ $category->name }}"
+                                    <button wire:click="edit({{ $article->id }})" class="btn btn-outline-primary"
+                                        data-bs-toggle="modal" data-bs-target="#editarticle">Edit</button>
+                                    <button type="button" wire:click="delete({{ $article->id }})"
+                                        wire:confirm ="Are you sure want to delete this article ? : {{ $article->name }}"
                                         class="btn btn-outline-danger" data-bs-toggle="modal"
-                                        data-bs-target="#deleteCategory">Delete</button>
+                                        data-bs-target="#deletearticle">Delete</button>
                                 </div>
                             </td>
 
                         </tr>
-                    @endforeach --}}
+                    @endforeach
         </div>
 
 
