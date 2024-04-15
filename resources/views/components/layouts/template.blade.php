@@ -50,8 +50,8 @@
         <div id="layoutSidenav_nav">
 
 
-            {{-- Sidebar Component --}}
-            <x-layouts.sidebar />
+            {{-- Sidebar Livewire Component --}}
+            <livewire:template.sidebar />
 
 
         </div>
