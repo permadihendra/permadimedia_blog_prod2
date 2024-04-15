@@ -5,6 +5,7 @@ use App\Http\Controllers\backend\CategoryController;
 use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Backend\Dashboard;
+use App\Livewire\Backend\CategoryPage;
 
 // Route::get('/', function () {
 //     return view('admin');
@@ -30,3 +31,4 @@ Auth::routes();
 
 // Livewire Routes
 Route::get('dashboard', Dashboard::class)->name('dashboard');
+Route::get('categories', CategoryPage::class)->name('categories');
