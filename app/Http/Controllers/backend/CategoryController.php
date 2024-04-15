@@ -37,6 +37,8 @@ class CategoryController extends Controller
         $data = $request->validate([
             'name' => 'required|min:3'
         ]);
+
+        session()->flash('status', 'Post successfully updated.');
     }
 
     /**

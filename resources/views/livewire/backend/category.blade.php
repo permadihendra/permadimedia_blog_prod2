@@ -3,20 +3,27 @@
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">Category</li>
     </ol>
-    @error('name')
+    {{-- @error('categoryName')
         <div class="alert alert-danger alert-dismissible fade show" role="alert">
             {{ $message }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
         </div>
-    @enderror
+    @enderror --}}
 
     <x-partial.modal-create title="Create Category" dataTarget="modalCreate">
-        <form action="{{ url('categories') }}" method="POST">
-            @csrf
+        <form wire:submit="store">
             <div class="mb-3 row">
                 <label for="name" class="col-sm-4 col-form-label">Category Name</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" id="name" name="name">
+                    <input type="text" class="form-control @error('name') is-invalid @enderror  " id="name"
+                        name="name" wire:model="name">
+
+                    @error('name')
+                        <div class="invalid-feedback">
+                            <span class="error">{{ $message }}</span>
+                        </div>
+                    @enderror
+
                 </div>
 
             </div>
