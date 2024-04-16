@@ -5,6 +5,7 @@ namespace App\Livewire\Backend;
 use Illuminate\Support\Str;
 use Livewire\Component;
 use Livewire\Attributes\Layout;
+use Livewire\Attributes\Validate;
 use Livewire\Features\SupportFormObjects\Form;
 
 use App\Models\Article;
@@ -12,21 +13,49 @@ use App\Models\Category;
 
 class ArticleWire extends Component
 {
+// Form Variables
+    #[Validate]
+    public $title = '';
+
+    #[Validate]
+    public $desc = '';
+
+    #[Validate]
+    public $img = '';
+
+    #[Validate]
+    public $publish_date = '';
+
+    #[Validate]
+    public $category_id = '';
+
 
     public $articles;
 
-    public $title, $desc, $img, $publish_date, $category_id;
+    
 
     public $categories;
 
-    public function store(Article $article) {
-
-        $article = $this->validate([
+    public function rules(){
+        return [
             'title' => 'required|min:3',
             'category_id' =>'required',
             'desc' => 'required|min:20',
             'publish_date' => 'required',
-        ]);
+        ];
+    }
+
+    public function store() {
+
+        $validated = $this->validate();
+
+         // Append Default values
+        $validated['slug'] =  Str::slug($this->title);
+        $validated['img'] = "article.jpg";
+        $validated['views'] = 0;
+        $validated['status'] = 'draft';
+
+        // dump($validated);
 
         // Get input data from public properties
         // $article->title = $this->title;
@@ -42,6 +71,9 @@ class ArticleWire extends Component
         // $article->status = "draft"; 
 
         // $article->save();
+
+        Article::create($validated);
+
         session()->flash('success', 'Article is created successfully.');
 
         return $this->redirect('articles', navigate: true);
