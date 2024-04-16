@@ -21,12 +21,12 @@ class ArticleWire extends Component
 
     public function store(Article $article) {
 
-        // $article = $this->validate([
-        //     'title' => 'required|min:3',
-        //     'category_id' =>'required',
-        //     'desc' => 'required|min:20',
-        //     'publish_date' => 'required',
-        // ]);
+        $article = $this->validate([
+            'title' => 'required|min:3',
+            'category_id' =>'required',
+            'desc' => 'required|min:20',
+            'publish_date' => 'required',
+        ]);
 
         // Get input data from public properties
         // $article->title = $this->title;

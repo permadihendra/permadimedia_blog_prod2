@@ -18,27 +18,8 @@
         @endscript
     @endif
 
+    {{-- Toast notification - livewire component  --}}
     <livewire:toast-notif />
-
-    {{-- Button to send the dispatch data --}}
-    <button wire:click="$dispatch('showToast', { message: 'Article is created successfully.' })" type="button"
-        class="btn btn-primary" id="liveToastBtn">Show live toast</button>
-
-    {{-- Template for toast --}}
-    <div class="toast-container position-fixed top-0 end-0 p-3">
-        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-            <div class="toast-header bg-success">
-                <i class="fa-regular fa-message text-white me-1"></i>
-                <strong class="me-auto text-white">Alert Message</strong>
-
-                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-            </div>
-            {{-- Pass the toastMessage by getElementByID on Javascript --}}
-            <div class="toast-body" id="toastMessage">
-
-            </div>
-        </div>
-    </div>
 
 
     {{-- use offcanvas balde component and insert livewire component inside it --}}
@@ -51,49 +32,48 @@
         <form>
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input wire:model="title" type="title" class="form-control" id="title"
-                    class="@error('title') is-invalid @enderror" />
+                <input wire:model="title" type="text" class="form-control @error('title') is-invalid @enderror"
+                    id="title" />
                 @error('title')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
             <div class="mb-3">
-                <label for="category" class="form-label">Title</label>
-                <select wire:model="category_id" name="category_id" id="category" class="form-control"
-                    class="@error('category_id') is-invalid @enderror">
+                <label for="category" class="form-label">Category</label>
+                <select wire:model="category_id" name="category_id" id="category"
+                    class="form-control @error('category_id') is-invalid @enderror">
                     <option value="">Select category</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
                 @error('category_id')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea wire:model="desc" class="form-control" id="description" rows="5"
-                    class="@error('desc') is-invalid @enderror"></textarea>
+                <textarea wire:model="desc" class="form-control @error('desc') is-invalid @enderror" id="description" rows="5"></textarea>
                 @error('desc')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
-                <input wire:model="img" type="file" class="form-control" id="image"
-                    class="@error('img') is-invalid @enderror">
+                <input wire:model="img" type="file" class="form-control @error('img') is-invalid @enderror"
+                    id="image">
                 @error('img')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
             <div class="mb-3">
                 <label for="publish_date" class="form-label">Publish Date</label>
-                <input wire:model="publish_date" type="publish_date" class="form-control" id="publish_date"
-                    class="@error('publish_date') is-invalid @enderror">
+                <input wire:model="publish_date" type="publish_date"
+                    class="form-control @error('publish_date') is-invalid @enderror" id="publish_date" class="">
                 @error('publish_date')
-                    <div class="alert alert-danger">{{ $message }}</div>
+                    <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 

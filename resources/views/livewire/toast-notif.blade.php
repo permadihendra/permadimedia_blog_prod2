@@ -5,7 +5,7 @@
 
 
 {{-- Template for toast --}}
-<div class="toast-container position-fixed top-0 start-0 p-3">
+<div class="toast-container position-fixed top-0 end-0 p-3">
     <div id="toastNotif" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
         <div class="toast-header bg-success">
             <i class="fa-regular fa-message text-white me-1"></i>
