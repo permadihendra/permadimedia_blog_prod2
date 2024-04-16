@@ -3,26 +3,42 @@
     <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item active">List of articles</li>
     </ol>
+
+
+    {{-- Toast Notification
+
+    dispatch event from livewire blade, if the session 'success' is true <- this from the livewire class component --}}
     @if (session('success'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('success') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
+        @script
+            <script>
+                $wire.dispatch('success-toast', {
+                    message: '{{ session('success') }}'
+                });
+            </script>
+        @endscript
     @endif
 
-    @if (session('successUpdate'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            {{ session('successUpdate') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endif
+    <livewire:toast-notif />
 
-    @if (session('successDelete'))
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            {{ session('successDelete') }}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    {{-- Button to send the dispatch data --}}
+    <button wire:click="$dispatch('showToast', { message: 'Article is created successfully.' })" type="button"
+        class="btn btn-primary" id="liveToastBtn">Show live toast</button>
+
+    {{-- Template for toast --}}
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header bg-success">
+                <i class="fa-regular fa-message text-white me-1"></i>
+                <strong class="me-auto text-white">Alert Message</strong>
+
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            {{-- Pass the toastMessage by getElementByID on Javascript --}}
+            <div class="toast-body" id="toastMessage">
+
+            </div>
         </div>
-    @endif
+    </div>
 
 
     {{-- use offcanvas balde component and insert livewire component inside it --}}
@@ -32,27 +48,58 @@
         </x-slot>
 
         {{-- insert form into slot --}}
-        <form wire:submit="store">
+        <form>
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
-                <input wire:model="title" type="title" class="form-control" id="title">
+                <input wire:model="title" type="title" class="form-control" id="title"
+                    class="@error('title') is-invalid @enderror" />
+                @error('title')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
+
+            <div class="mb-3">
+                <label for="category" class="form-label">Title</label>
+                <select wire:model="category_id" name="category_id" id="category" class="form-control"
+                    class="@error('category_id') is-invalid @enderror">
+                    <option value="">Select category</option>
+                    @foreach ($categories as $category)
+                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                @error('category_id')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea wire:model="desc" class="form-control" id="description" rows="5"></textarea>
+                <textarea wire:model="desc" class="form-control" id="description" rows="5"
+                    class="@error('desc') is-invalid @enderror"></textarea>
+                @error('desc')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
-                <input wire:model="img" type="file" class="form-control" id="image">
+                <input wire:model="img" type="file" class="form-control" id="image"
+                    class="@error('img') is-invalid @enderror">
+                @error('img')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
             <div class="mb-3">
                 <label for="publish_date" class="form-label">Publish Date</label>
-                <input wire:model="publish_date" type="publish_date" class="form-control" id="publish_date">
+                <input wire:model="publish_date" type="publish_date" class="form-control" id="publish_date"
+                    class="@error('publish_date') is-invalid @enderror">
+                @error('publish_date')
+                    <div class="alert alert-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <div class="text-end mt-4">
                 <button type="button" class="btn btn-secondary">Cancel</button>
-                <button type="submit" class="btn btn-success">Save</button>
+                <button wire:click="store" type="button" class="btn btn-success">Save</button>
             </div>
         </form>
     </x-offcanvas>
@@ -115,3 +162,21 @@
     </div>
 </div>
 </div>
+
+
+
+@push('scripts')
+    {{-- <script>
+        document.addEventListener('livewire:init', () => {
+            Livewire.on('showToast', (data) => {
+                //
+                console.log(data);
+                const toastLiveExample = document.getElementById('liveToast')
+                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
+
+                document.getElementById('toastMessage').textContent = data.message
+                toastBootstrap.show()
+            });
+        });
+    </script> --}}
+@endpush

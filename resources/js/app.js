@@ -4,6 +4,9 @@ import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 import "./datatables-simple-demo";
 import "./scripts";
 
+import * as bootstrap from "bootstrap";
+window.bootstrap = bootstrap;
+
 document.addEventListener("livewire:navigated", (event) => {
     // Dom Load Datatables when wire:navigate
     const datatablesSimple = document.getElementById("datatablesSimple");
