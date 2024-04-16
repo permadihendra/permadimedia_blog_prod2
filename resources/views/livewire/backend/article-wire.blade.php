@@ -24,6 +24,41 @@
         </div>
     @endif
 
+
+    {{-- use offcanvas balde component and insert livewire component inside it --}}
+    <x-offcanvas>
+        <x-slot name="title">
+            Create Article
+        </x-slot>
+
+        {{-- insert form into slot --}}
+        <form wire:submit="store">
+            <div class="mb-3">
+                <label for="title" class="form-label">Title</label>
+                <input wire:model="title" type="title" class="form-control" id="title">
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Description</label>
+                <textarea wire:model="desc" class="form-control" id="description" rows="5"></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="image" class="form-label">Image</label>
+                <input wire:model="img" type="file" class="form-control" id="image">
+            </div>
+            <div class="mb-3">
+                <label for="publish_date" class="form-label">Publish Date</label>
+                <input wire:model="publish_date" type="publish_date" class="form-control" id="publish_date">
+            </div>
+
+            <div class="text-end mt-4">
+                <button type="button" class="btn btn-secondary">Cancel</button>
+                <button type="submit" class="btn btn-success">Save</button>
+            </div>
+        </form>
+    </x-offcanvas>
+
+    <div class="mb-2"></div>
+
     <div class="card mb-4">
         <div class="card-body">
             <table id="datatablesSimple">
