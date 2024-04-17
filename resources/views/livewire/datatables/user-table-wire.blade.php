@@ -26,14 +26,14 @@
         </div>
     </div>
     <div class="card-body overflow-x-scroll">
-        <table class="table table-hover fs-6">
+        <table class="table table-hover fs-8">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">email</th>
-                    <th scope="col">Role</th>
-                    <th scope="col">Created</th>
+                    <th scope="col" wire:click="setSortBy('name')">Name <i class="fas fa-sort"></i></th>
+                    <th scope="col" wire:click="setSortBy('email')">email <i class="fas fa-sort"></i></th>
+                    <th scope="col" wire:click="setSortBy('is_admin')">Role <i class="fas fa-sort"></i></th>
+                    <th scope="col" wire:click="setSortBy('created_at')">Created <i class="fas fa-sort"></i></th>
                     <th scope="col">Last Update</th>
                     <th scope="col">Action</th>
                 </tr>
