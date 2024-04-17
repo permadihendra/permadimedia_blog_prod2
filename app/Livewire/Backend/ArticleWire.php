@@ -89,6 +89,6 @@ class ArticleWire extends Component
     #[Layout('components.layouts.template')]
     public function render()
     {
-        return view('livewire.backend.article-wire');
+        return view('livewire.backend.article-wire')->with(['title' => 'Articles - Admin']);
     }
 }

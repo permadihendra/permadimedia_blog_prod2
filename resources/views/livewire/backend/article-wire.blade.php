@@ -1,3 +1,7 @@
+{{-- Dynamic title for livewire full page --}}
+
+@section('title', 'Articles - Admin')
+
 <div class="container-fluid px-4">
     <h1 class="mt-4">Articles</h1>
     <ol class="breadcrumb mb-4">
@@ -26,6 +30,10 @@
     <x-offcanvas>
         <x-slot name="title">
             Create Article
+        </x-slot>
+
+        <x-slot name="color">
+            success
         </x-slot>
 
         {{-- insert form into slot --}}
