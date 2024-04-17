@@ -17,11 +17,16 @@ class UserTableWire extends Component
 
     public $search = '';
     public $perPage = 10;
+    public $userType ='';
 
     public function render()
     {
         return view('livewire.datatables.user-table-wire', [
-            'users' => User::search($this->search)->paginate($this->perPage),
+            'users' => User::search($this->search)
+            ->when($this->userType !== '', function($query){
+                $query->where('is_admin', $this->userType);
+            })
+            ->paginate($this->perPage),
         ]);
     }
 }

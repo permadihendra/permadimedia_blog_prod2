@@ -14,11 +14,10 @@
                     <label for="usertype" class="col-form-label">User Type : </label>
                 </div>
                 <div class="col-auto">
-                    <select id="usertype" class="form-select" aria-label="Default select example">
-                        <option selected>Open this select menu</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                    <select wire:model.change="userType" id="usertype" class="form-select" aria-label="select">
+                        <option value="">Select user type</option>
+                        <option value="0">User</option>
+                        <option value="1">Admin</option>
                     </select>
                 </div>
             </div>
