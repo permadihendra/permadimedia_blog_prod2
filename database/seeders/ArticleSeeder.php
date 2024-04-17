@@ -14,6 +14,8 @@ class ArticleSeeder extends Seeder
      */
     public function run(): void
     {
+        Article::factory(100)->create();
+
         Article::create([
             'category_id' => 1,
             'title' => 'technology',
