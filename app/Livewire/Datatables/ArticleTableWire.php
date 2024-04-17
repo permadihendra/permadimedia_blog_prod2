@@ -33,10 +33,6 @@ class ArticleTableWire extends Component
         $this->resetPage(); // resetPage() is livewire WithPagination function
     }
 
-    public function delete(Article $article){
-        $article->delete();
-    }
-
     // function to retrieve wire:model Sortby when the columns title is clicked
     public function setSortBy($sortBy){
         if ($this->sortBy === $sortBy){

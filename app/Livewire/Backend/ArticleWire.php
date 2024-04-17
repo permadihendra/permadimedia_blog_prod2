@@ -86,6 +86,13 @@ class ArticleWire extends Component
         $this->categories = Category::orderBy('name', 'ASC')->get();
     }
 
+    public function delete(Article $article){
+        $article->delete();
+        session()->flash('success', 'Article is deleted successfully.');
+        
+        return $this->redirect('articles', navigate: true);
+    }
+
     #[Layout('components.layouts.template')]
     public function render()
     {

@@ -76,8 +76,8 @@
                                 <button class="btn btn-outline-secondary">Detail</button>
                                 <button wire:click="edit({{ $article->id }})" class="btn btn-outline-primary"
                                     data-bs-toggle="modal" data-bs-target="#editarticle">Edit</button>
-                                <button type="button" wire:click="delete({{ $article->id }})"
-                                    wire:confirm ="Are you sure want to delete this article ? : {{ $article->name }}"
+                                <button type="button" wire:click="$parent.delete({{ $article->id }})"
+                                    wire:confirm ="Are you sure want to delete this article ? : {{ $article->title }}"
                                     class="btn btn-outline-danger" data-bs-toggle="modal"
                                     data-bs-target="#deletearticle">Delete</button>
                             </div>
