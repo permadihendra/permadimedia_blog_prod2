@@ -53,7 +53,7 @@ class ArticleWire extends Component
         $validated['slug'] =  Str::slug($this->title);
         $validated['img'] = "article.jpg";
         $validated['views'] = 0;
-        $validated['status'] = 'draft';
+        $validated['status'] = 0;
 
         // dump($validated);
 

@@ -97,7 +97,7 @@
 
     <div class="card mb-4">
         <div class="card-body">
-            <table wire:ignore.self id="datatablesSimple">
+            <table id="datatablesSimple">
                 <thead>
                     <tr>
                         <th>No</th>
@@ -126,7 +126,13 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $article->title }}</td>
                             <td>{{ $article->category->name }}</td>
-                            <td>{{ $article->status }}</td>
+
+                            @if ($article->status == 0)
+                                <td class="badge bg-danger">{{ $article->status }}</td>
+                            @else
+                                <td class="badge bg-success">{{ $article->status }}</td>
+                            @endif
+
                             <td>{{ $article->publish_date }}</td>
                             <td>{{ $article->updated_at }}</td>
                             <td>
