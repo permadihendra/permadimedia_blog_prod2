@@ -97,60 +97,10 @@
 
     <div class="card mb-4">
         <div class="card-body">
-            <table id="datatablesSimple">
-                <thead>
-                    <tr>
-                        <th>No</th>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th>Status</th>
-                        <th>Publish Date</th>
-                        <th>Updated at</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tfoot>
-                    <tr>
-                        <th>No</th>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th>Status</th>
-                        <th>Publish Date</th>
-                        <th>Updated at</th>
-                        <th>Action</th>
-                    </tr>
-                </tfoot>
-                <tbody>
-                    @foreach ($articles as $article)
-                        <tr>
-                            <td>{{ $loop->iteration }}</td>
-                            <td>{{ $article->title }}</td>
-                            <td>{{ $article->category->name }}</td>
 
-                            @if ($article->status == 0)
-                                <td class="badge bg-danger">{{ $article->status }}</td>
-                            @else
-                                <td class="badge bg-success">{{ $article->status }}</td>
-                            @endif
+            {{-- Datatables Article Livewire --}}
+            <livewire:datatables.article-table-wire />
 
-                            <td>{{ $article->publish_date }}</td>
-                            <td>{{ $article->updated_at }}</td>
-                            <td>
-                                <div>
-                                    <button class="btn btn-outline-secondary">Detail</button>
-                                    <button wire:click="edit({{ $article->id }})" class="btn btn-outline-primary"
-                                        data-bs-toggle="modal" data-bs-target="#editarticle">Edit</button>
-                                    <button type="button" wire:click="delete({{ $article->id }})"
-                                        wire:confirm ="Are you sure want to delete this article ? : {{ $article->name }}"
-                                        class="btn btn-outline-danger" data-bs-toggle="modal"
-                                        data-bs-target="#deletearticle">Delete</button>
-                                </div>
-                            </td>
-
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
         </div>
     </div>
 </div>

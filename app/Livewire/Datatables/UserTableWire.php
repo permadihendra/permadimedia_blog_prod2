@@ -22,6 +22,11 @@ class UserTableWire extends Component
     public $sortBy = 'id';
     public $sortDir = 'DESC'; //Sorting direction 
 
+    // Reset Page After Search with updated Hook
+    public function updatedSearch(){
+        $this->resetPage(); // resetPage() is livewire WithPagination function
+    }
+
     public function delete(User $user){
         $user->delete();
     }
