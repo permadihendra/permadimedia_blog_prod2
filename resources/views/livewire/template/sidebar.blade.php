@@ -20,7 +20,9 @@
             </a>
 
             <div class="sb-sidenav-menu-heading">Administrator</div>
-            <a class="nav-link" href="index.html" wire:navigate>
+
+            <a class="nav-link @if (Route::is('users')) {{ 'active' }} @endif" href="{{ route('users') }}"
+                wire:navigate>
                 <div class="sb-nav-link-icon"><i class="fas fa-circle-user"></i></div>
                 Users
             </a>

@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Livewire\Backend\Dashboard;
 use App\Livewire\Backend\CategoryPage;
 use App\Livewire\Backend\ArticleWire;
+use App\Livewire\Backend\UserWire;
 
 // Route::get('/', function () {
 //     return view('admin');
@@ -34,3 +35,4 @@ Auth::routes();
 Route::get('dashboard', Dashboard::class)->name('dashboard');
 Route::get('categories', CategoryPage::class)->name('categories');
 Route::get('articles', ArticleWire::class)->name('articles');
+Route::get('users', UserWire::class)->name('users');
