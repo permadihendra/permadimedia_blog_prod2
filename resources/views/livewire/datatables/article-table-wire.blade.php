@@ -9,16 +9,33 @@
                 </div>
             </div>
 
-            <div class="col-sm-auto row ms-auto">
-                <div class="col-auto">
-                    <label for="usertype" class="col-form-label">User Type : </label>
+            <div class="col-sm-auto ms-auto row">
+                <div class="col-sm-auto row">
+                    <div class="col-auto">
+                        <label for="status" class="col-form-label">Category : </label>
+                    </div>
+                    <div class="col-auto">
+                        <select wire:model.change="categoryFilter" id="status" class="form-select"
+                            aria-label="select">
+                            <option value="">All status</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 </div>
-                <div class="col-auto">
-                    <select wire:model.change="userType" id="usertype" class="form-select" aria-label="select">
-                        <option value="">Select user type</option>
-                        <option value="0">User</option>
-                        <option value="1">Admin</option>
-                    </select>
+
+                <div class="col-sm-auto row">
+                    <div class="col-auto">
+                        <label for="status" class="col-form-label">Status : </label>
+                    </div>
+                    <div class="col-auto">
+                        <select wire:model.change="status" id="status" class="form-select" aria-label="select">
+                            <option value="">All status</option>
+                            <option value="0">Draft</option>
+                            <option value="1">Published</option>
+                        </select>
+                    </div>
                 </div>
             </div>
 
@@ -30,10 +47,10 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col" wire:click="setSortBy('name')">Title <i class="fas fa-sort"></i></th>
-                    <th scope="col" wire:click="setSortBy('email')">Category <i class="fas fa-sort"></i></th>
-                    <th scope="col" wire:click="setSortBy('is_admin')">Status <i class="fas fa-sort"></i></th>
-                    <th scope="col" wire:click="setSortBy('created_at')">Published Data <i class="fas fa-sort"></i>
+                    <th scope="col" wire:click="setSortBy('title')">Title <i class="fas fa-sort"></i></th>
+                    <th scope="col" wire:click="setSortBy('category_id')">Category <i class="fas fa-sort"></i></th>
+                    <th scope="col" wire:click="setSortBy('status')">Status <i class="fas fa-sort"></i></th>
+                    <th scope="col" wire:click="setSortBy('publish_date')">Published Data <i class="fas fa-sort"></i>
                     </th>
                     <th scope="col">Last Update</th>
                     <th scope="col">Action</th>
@@ -47,12 +64,12 @@
                         <td>{{ $article->category->name }}</td>
                         <td>
                             @if ($article->status == 0)
-                                <small class="badge bg-danger">{{ $article->status }}</small>
+                                <small class="badge bg-danger">Draft</small>
                             @else
-                                <small class="badge bg-success">{{ $article->status }}</small>
+                                <small class="badge bg-success">Published</small>
                             @endif
                         </td>
-                        <td>{{ $article->created_at }}</td>
+                        <td>{{ $article->publish_date }}</td>
                         <td>{{ $article->updated_at }}</td>
                         <td>
                             <div>
@@ -75,10 +92,10 @@
             <div class="col-sm-4">
                 <div class="row">
                     <div class="col-5">
-                        <label for="usertype" class="col-form-label">Per page : </label>
+                        <label for="perPage" class="col-form-label">Per page : </label>
                     </div>
                     <div class="col-5">
-                        <select wire:model.change="perPage" id="usertype" class="form-select"
+                        <select wire:model.change="perPage" id="perPage" class="form-select"
                             aria-label="Default select example">
                             <option value="10">10</option>
                             <option value="20">20</option>

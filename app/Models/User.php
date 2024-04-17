@@ -46,6 +46,7 @@ class User extends Authenticatable
         ];
     }
 
+    // Scope search to add search functionality in eloquent query
     public function scopeSearch($query, $value){
         $query->where('name', 'like', "%{$value}%")->orWhere('email', 'like', "%{$value}%");
     }

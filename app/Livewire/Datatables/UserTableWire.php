@@ -13,7 +13,7 @@ class UserTableWire extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = 'bootstrap';
+    protected $paginationTheme = 'bootstrap'; //set the pagination theme to bootstrap
 
     public $search = '';
     public $perPage = 10;
