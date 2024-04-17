@@ -19,6 +19,10 @@ class UserTableWire extends Component
     public $perPage = 10;
     public $userType ='';
 
+    public function delete(User $user){
+        $user->delete();
+    }
+
     public function render()
     {
         return view('livewire.datatables.user-table-wire', [

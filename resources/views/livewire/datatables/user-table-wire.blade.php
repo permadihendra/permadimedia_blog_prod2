@@ -55,8 +55,9 @@
                         <td>{{ $user->updated_at }}</td>
                         <td>
                             <div class="row">
-                                <button class="btn btn-secondary"> : </button>
-                                <button class="btn btn-danger"> X </button>
+                                <button wire:click="delete({{ $user->id }})"
+                                    wire:confirm="Are you sure want to delete user ID :{{ $user->id }}, {{ $user->name }} ?"
+                                    class="btn btn-danger"> X </button>
                             </div>
                         </td>
                     </tr>
