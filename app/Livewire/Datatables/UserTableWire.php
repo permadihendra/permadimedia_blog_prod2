@@ -31,6 +31,7 @@ class UserTableWire extends Component
         $user->delete();
     }
 
+    // function to retrieve wire:model Sortby when the columns title is clicked
     public function setSortBy($sortBy){
         if ($this->sortBy === $sortBy){
             $this->sortDir = ($this->sortDir == 'ASC') ? 'DESC' : 'ASC';

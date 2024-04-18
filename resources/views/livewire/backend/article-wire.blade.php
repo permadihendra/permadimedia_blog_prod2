@@ -87,7 +87,7 @@
             </div>
 
             <div class="text-end mt-4">
-                <button type="button" class="btn btn-secondary">Cancel</button>
+                <button wire:click="cancel" type="button" class="btn btn-secondary">Cancel</button>
                 <button wire:click="store" type="button" class="btn btn-success">Save</button>
             </div>
         </form>

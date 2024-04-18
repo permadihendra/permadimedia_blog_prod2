@@ -91,10 +91,8 @@
         <div>
             <div class="col-sm-4">
                 <div class="row">
-                    <div class="col-5">
-                        <label for="perPage" class="col-form-label">Per page : </label>
-                    </div>
-                    <div class="col-5">
+
+                    <div class="col-3">
                         <select wire:model.change="perPage" id="perPage" class="form-select"
                             aria-label="Default select example">
                             <option value="10">10</option>
@@ -103,6 +101,9 @@
                             <option value="50">50</option>
                             <option value="100">100</option>
                         </select>
+                    </div>
+                    <div class="col-5">
+                        <label for="perPage" class="col-form-label">Per page</label>
                     </div>
                 </div>
             </div>
