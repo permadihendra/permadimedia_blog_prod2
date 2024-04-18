@@ -95,14 +95,12 @@
 
     <div class="mb-2"></div>
 
-    <div class="card mb-4">
-        <div class="card-body">
 
-            {{-- Datatables Article Livewire --}}
-            <livewire:datatables.article-table-wire />
 
-        </div>
-    </div>
+    {{-- Datatables Article Livewire --}}
+    <livewire:datatables.article-table-wire />
+
+
 </div>
 
 
