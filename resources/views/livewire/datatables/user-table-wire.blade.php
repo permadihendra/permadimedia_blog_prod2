@@ -55,7 +55,7 @@
                         <td>{{ $user->updated_at }}</td>
                         <td>
                             <div class="row">
-                                <button wire:click="delete({{ $user->id }})"
+                                <button wire:click="$parent.delete({{ $user->id }})"
                                     wire:confirm="Are you sure want to delete user ID :{{ $user->id }}, {{ $user->name }} ?"
                                     class="btn btn-danger"> X </button>
                             </div>

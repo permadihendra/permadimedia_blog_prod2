@@ -72,6 +72,10 @@ class ArticleCreateWire extends Component
         
     }
 
+    public function cancel(){
+        return $this->redirect('/articles', navigate: true);
+    }
+
     #[Layout('components.layouts.template')]
     public function render()
     {

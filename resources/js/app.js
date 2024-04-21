@@ -1,4 +1,5 @@
 // Required Bootstrap js
+import "bootstrap";
 import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import "./datatables-simple-demo";

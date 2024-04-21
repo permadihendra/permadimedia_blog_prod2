@@ -43,6 +43,7 @@ class ArticleTableWire extends Component
         $this->sortBy = $sortBy;
         $this->sortDir = 'DESC';
     }
+    
 
     public function render()
     {
