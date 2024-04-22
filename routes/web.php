@@ -8,6 +8,7 @@ use App\Livewire\Backend\Dashboard;
 use App\Livewire\Backend\CategoryPage;
 use App\Livewire\Backend\ArticleWire;
 use App\Livewire\Backend\ArticleCreateWire;
+use App\Livewire\Backend\ArticleEditWire;
 use App\Livewire\Backend\UserWire;
 
 
@@ -38,4 +39,5 @@ Route::get('dashboard', Dashboard::class)->name('dashboard');
 Route::get('categories', CategoryPage::class)->name('categories');
 Route::get('articles', ArticleWire::class)->name('articles');
 Route::get('articles/create', ArticleCreateWire::class)->name('articles.create');
+Route::get('articles/edit/{id}', ArticleEditWire::class)->name('article.edit');
 Route::get('users', UserWire::class)->name('users');

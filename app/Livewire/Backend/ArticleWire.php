@@ -8,11 +8,14 @@ use Livewire\Attributes\Layout;
 use Livewire\Attributes\Validate;
 use Livewire\Features\SupportFormObjects\Form;
 
+use App\Livewire\Forms\ArticleForm;
+
 use App\Models\Article;
 use App\Models\Category;
 
 class ArticleWire extends Component
 {
+    public ArticleForm $form;
    
     public function boot(){
         $this->articles = Article::latest()->get();
@@ -23,6 +26,10 @@ class ArticleWire extends Component
     public function create(){
         return $this->redirect('/articles/create', navigate: true);
     }
+
+    // public function edit($id){
+    //     return $this->redirect('/articles/edit/',$id, navigate: true);
+    // }
 
     public function delete(Article $article){
         $article->delete();

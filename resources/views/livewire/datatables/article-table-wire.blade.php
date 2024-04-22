@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
+                    <span class="input-group-text" id="basic-addon1"><i class="fbutton fa-search"></i></span>
                     <input wire:model.live.debounce.300ms="search" type="text" class="form-control"
                         placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
                 </div>
@@ -75,9 +75,8 @@
                         <td>{{ $article->updated_at }}</td>
                         <td>
                             <div>
-                                <button class="btn btn-outline-secondary">Detail</button>
-                                <button wire:click="edit({{ $article->id }})"
-                                    class="btn btn-outline-primary">Edit</button>
+                                <a href="{{ route('article.edit', $article->id) }}" class="btn btn-outline-primary"
+                                    wire:navigate>Details</a>
                                 <button type="button" wire:click="$parent.delete({{ $article->id }})"
                                     wire:confirm ="Are you sure want to delete this article ? : {{ $article->title }}"
                                     class="btn btn-outline-danger">Delete</button>
