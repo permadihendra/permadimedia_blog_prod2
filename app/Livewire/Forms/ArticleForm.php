@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Forms;
 
+use Illuminate\Support\Facades\Storage;
+
 use Livewire\Attributes\Validate;
 use Livewire\Form;
 use Livewire\Attributes\Str;
@@ -27,6 +29,10 @@ class ArticleForm extends Form
     #[Validate]
     public $img = '';
 
+    public $img_saved = ''; //save the old image values, for deleting
+
+    public $img_update = '';
+
     #[Validate]
     public $publish_date = '';
 
@@ -41,18 +47,22 @@ class ArticleForm extends Form
             'title' => 'required|min:3',
             'category_id' =>'required',
             'desc' => 'required|min:20',
-            'img' => 'required|image|mimes:png,jpg,jpeg|max:2024',
+            // 'img' => 'image|mimes:png,jpg,jpeg|max:2024',
             'publish_date' => 'required',
         ];
     }
 
     public function setArticle(Article $article){
-        $this->article = $article;
-        $this->title = $article->title;
-        $this->desc = $article->desc;
-        $this->img = $article->img;
-        $this->publish_date = $article->publish_date;
-        $this->category_id = $article->category_id;
+        // if ($article) {
+            $this->article = $article;
+            $this->title = $article->title;
+            $this->desc = $article->desc;
+            $this->img = $article->img;
+            $this->img_saved = $article->img; // save the image values for deleting
+            $this->publish_date = $article->publish_date;
+            $this->category_id = $article->category_id;
+        // }
+        // else return abort(404);
      }
 
     public function store() {
@@ -80,6 +90,21 @@ class ArticleForm extends Form
     }
 
     public function update(){
+
+        $this->validate(); //valudate using form validation
+
+        if(is_file($this->img)) //check if $this->image is not String, then 
+        {
+            $filename = uniqid().'.'.$this->img->extension(); //12763dshd.jpg
+            $file_path = $this->img->storeAs('backend/images', $filename, 'public'); // store file in "backend/images" folder public and get the full path
+          
+            // dump($this->img_saved);
+            Storage::delete('public/'.$this->img_saved); // delete saved image before
+
+            // Append Default values
+            $this->img = $file_path;
+        }
+
         $this->article->update(
             $this->all()
         );

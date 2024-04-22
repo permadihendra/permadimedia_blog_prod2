@@ -39,5 +39,5 @@ Route::get('dashboard', Dashboard::class)->name('dashboard');
 Route::get('categories', CategoryPage::class)->name('categories');
 Route::get('articles', ArticleWire::class)->name('articles');
 Route::get('articles/create', ArticleCreateWire::class)->name('articles.create');
-Route::get('articles/edit/{id}', ArticleEditWire::class)->name('article.edit');
+Route::get('articles/edit/{article}', ArticleEditWire::class)->name('article.edit');
 Route::get('users', UserWire::class)->name('users');
