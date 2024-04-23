@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Storage;
 
 use Livewire\Attributes\Validate;
 use Livewire\Form;
-use Livewire\Attributes\Str;
+use Illuminate\Support\Str;
 use Livewire\WithFileUploads;
 
 use App\Models\Category;
@@ -103,7 +103,7 @@ class ArticleForm extends Form
 
     public function update(){
 
-        $this->validate(); //valudate using form validation
+        $validated = $this->validate(); //valudate using form validation
 
         if(is_file($this->img)) //check if $this->image is not String, then 
         {
@@ -119,8 +119,11 @@ class ArticleForm extends Form
             $this->img = $this->img_saved;
         }
 
+        $validated['slug'] =  Str::slug($this->title);
+
         $this->article->update(
-            $this->all()
+            // $this->all()
+            $validated
         );
     }
 }
