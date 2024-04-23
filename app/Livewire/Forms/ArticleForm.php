@@ -43,14 +43,25 @@ class ArticleForm extends Form
     public $articles;
     
     public function rules(){
-        return [
+        $rules = [
             'title' => 'required|min:3',
-            'category_id' =>'required',
-            'desc' => 'required|min:20',
-            // 'img' => 'nullable|image|mimes:png,jpg,jpeg|max:2024',
-            'img' => 'nullable|sometimes|mimes:jpeg,png,jpg,svg|max:2048',
-            'publish_date' => 'required',
+                'category_id' =>'required',
+                'desc' => 'required|min:20',
+                // 'img' => 'nullable|image|mimes:png,jpg,jpeg|max:2024',
+                // 'img' => 'nullable|sometimes|max:2048',
+                'publish_date' => 'required',
         ];
+
+        return $rules;
+
+        // return [
+        //     'title' => 'required|min:3',
+        //     'category_id' =>'required',
+        //     'desc' => 'required|min:20',
+        //     // 'img' => 'nullable|image|mimes:png,jpg,jpeg|max:2024',
+        //     'img' => 'nullable|sometimes|mimes:jpeg,png,jpg,svg|max:2048',
+        //     'publish_date' => 'required',
+        // ];
     }
 
     public function setArticle(Article $article){
