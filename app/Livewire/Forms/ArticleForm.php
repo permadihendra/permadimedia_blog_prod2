@@ -47,7 +47,8 @@ class ArticleForm extends Form
             'title' => 'required|min:3',
             'category_id' =>'required',
             'desc' => 'required|min:20',
-            // 'img' => 'image|mimes:png,jpg,jpeg|max:2024',
+            // 'img' => 'nullable|image|mimes:png,jpg,jpeg|max:2024',
+            'img' => 'nullable|sometimes|mimes:jpeg,png,jpg,svg|max:2048',
             'publish_date' => 'required',
         ];
     }
@@ -103,6 +104,8 @@ class ArticleForm extends Form
 
             // Append Default values
             $this->img = $file_path;
+        } else {
+            $this->img = $this->img_saved;
         }
 
         $this->article->update(
