@@ -32,7 +32,12 @@ class ArticleWire extends Component
     // }
 
     public function delete(Article $article){
-        $article->delete();
+
+        // dump($article);
+        $this->form->delete($article);
+
+        // $article->delete();
+
         session()->flash('success', 'Article is deleted successfully.');
 
         return $this->redirect('/articles', navigate: true);

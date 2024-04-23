@@ -138,4 +138,14 @@ class ArticleForm extends Form
             $validated
         );
     }
+
+    public function delete(Article $article){
+
+        // Add function if the file exist then delete
+        if(Storage::exists('public/'.$article->img)){
+            Storage::delete('public/'.$article->img); // delete saved image before
+        }
+        $article->delete();
+    }
+
 }
