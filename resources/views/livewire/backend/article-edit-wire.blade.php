@@ -41,7 +41,7 @@
             @enderror
         </div>
         <div class="mb-3">
-            @if ($form->img)
+            @if ($form->img_saved)
                 <label for="image" class="form-label" id="image_label">Change New Image <small
                         class="text-muted">(Max. 2
                         MB)</small></label>
@@ -51,7 +51,7 @@
             @endif
             <input wire:model.blur="form.img" name="img" type="file"
                 class="form-control @error('form.img') is-invalid @enderror" id="image">
-            @if ($form->img)
+            @if ($form->img_saved)
                 <div class="card mb-3 mt-3" style="max-width: 440px">
                     <div class="row gap-0">
                         <div class="col-md-4">

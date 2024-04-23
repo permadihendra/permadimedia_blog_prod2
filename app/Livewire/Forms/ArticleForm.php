@@ -47,7 +47,7 @@ class ArticleForm extends Form
             'title' => 'required|min:3',
                 'category_id' =>'required',
                 'desc' => 'required|min:20',
-                // 'img' => 'nullable|image|mimes:png,jpg,jpeg|max:2024',
+                'img' => 'nullable|file|image|mimes:png,jpg,jpeg|max:2024',
                 // 'img' => 'nullable|sometimes|max:2048',
                 'publish_date' => 'required',
         ];
@@ -69,8 +69,8 @@ class ArticleForm extends Form
             $this->article = $article;
             $this->title = $article->title;
             $this->desc = $article->desc;
-            $this->img = $article->img;
-            $this->img_saved = $article->img; // save the image values for deleting
+            // $this->img = $article->img;  //keep the $hits->img unassign
+            $this->img_saved = $article->img; // save the image values for temporary assign (for delete, or display image)
             $this->publish_date = $article->publish_date;
             $this->category_id = $article->category_id;
         // }
@@ -103,26 +103,38 @@ class ArticleForm extends Form
 
     public function update(){
 
+        // dump($this->all());
+
         $validated = $this->validate(); //valudate using form validation
 
-        if(is_file($this->img)) //check if $this->image is not String, then 
+        // dump($validated);
+
+        if($this->img) //check if $this->image is not String, then 
         {
             $filename = uniqid().'.'.$this->img->extension(); //12763dshd.jpg
             $file_path = $this->img->storeAs('backend/images', $filename, 'public'); // store file in "backend/images" folder public and get the full path
-          
-            // dump($this->img_saved);
-            Storage::delete('public/'.$this->img_saved); // delete saved image before
 
             // Append Default values
-            $this->img = $file_path;
+            $validated['img'] = $file_path; // if there is new upload file
+            
+            // Add function if the file exist
+            if(Storage::exists('public/'.$this->img_saved)){
+                Storage::delete('public/'.$this->img_saved); // delete saved image before
+            }
+           
+
         } else {
-            $this->img = $this->img_saved;
+            $validated['img'] = $this->img_saved; // if there is not new upload file
         }
 
+        
+
+        
         $validated['slug'] =  Str::slug($this->title);
 
+        // dump($validated);
+
         $this->article->update(
-            // $this->all()
             $validated
         );
     }
