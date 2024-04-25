@@ -34,6 +34,11 @@ Auth::routes();
 //     'index', 'store', 'update', 'destroy',
 // ]);
 
+// Laravel filemanager
+Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
+    \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+
 // Livewire Routes
 Route::get('dashboard', Dashboard::class)->name('dashboard');
 Route::get('categories', CategoryPage::class)->name('categories');

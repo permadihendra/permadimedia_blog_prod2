@@ -32,14 +32,33 @@
             </div>
         </div>
 
+        {{-- <div class="mb-3">
+            <label for="description" class="form-label" id="description-label">Description</label>
+            <div wire:ignore>
+                <textarea wire:model="desc" name="desc" class="form-control @error('desc') is-invalid @enderror" id="myEditor"
+                    rows="5"></textarea>
+            </div>
+
+            @error('desc')
+                <span class="text-danger">{{ $message }}</span>
+            @enderror
+        </div> --}}
+
         <div class="mb-3">
             <label for="description" class="form-label" id="description-label">Description</label>
-            <textarea wire:model.blur="desc" name="desc" class="form-control @error('desc') is-invalid @enderror"
-                id="description" rows="5"></textarea>
+            <div wire:ignore>
+                <textarea name="content" class="form-control @error('desc') is-invalid @enderror" id="summernote-editor" rows="5"></textarea>
+            </div>
+            <input type="hidden" wire:model.blur="desc">
             @error('desc')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
+
+        <!-- markup -->
+
+
+
         <div class="mb-3">
             <label for="image" class="form-label" id="image_label">Image <small class="text-muted">(Max. 2
                     MB)</small></label>
@@ -64,4 +83,83 @@
         </div>
     </form>
 
+
+    @assets
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+
+
+        <link href="/css/summernote-lite.css" rel="stylesheet">
+        <script src="/js/summernote-lite.js"></script>
+    @endassets
+
+    @script
+        <script>
+            $(document).ready(function() {
+
+                // Define function to open filemanager window
+                var lfm = function(options, cb) {
+                    var route_prefix = (options && options.prefix) ? options.prefix : '/laravel-filemanager';
+                    window.open(route_prefix + '?type=' + options.type || 'file', 'FileManager',
+                        'width=900,height=600');
+                    window.SetUrl = cb;
+                };
+
+                // Define LFM summernote button
+                var LFMButton = function(context) {
+                    var ui = $.summernote.ui;
+                    var button = ui.button({
+                        contents: '<i class="note-icon-picture"></i> ',
+                        tooltip: 'Insert image with filemanager',
+                        click: function() {
+
+                            lfm({
+                                type: 'image',
+                                prefix: '/laravel-filemanager'
+                            }, function(lfmItems, path) {
+                                lfmItems.forEach(function(lfmItem) {
+                                    context.invoke('insertImage', lfmItem.url);
+                                });
+                            });
+
+                        }
+                    });
+                    return button.render();
+                };
+
+                // Initialize summernote with LFM button in the popover button group
+                // Please note that you can add this button to any other button group you'd like
+                $('#summernote-editor').summernote({
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'underline', 'clear']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'paragraph']],
+                        ['table', ['table']],
+                        // ['insert', ['link', 'picture', 'video']],
+                        ['insert', ['popovers', ['lfm']]],
+                        ['view', ['fullscreen', 'codeview', 'help']],
+
+                    ],
+                    buttons: {
+                        lfm: LFMButton
+                    },
+                    callbacks: {
+                        onChange: function(contents, $editable) {
+                            @this.set('desc', contents);
+                        }
+                    }
+                })
+            });
+        </script>
+    @endscript
+
 </div>
+
+
+@push('css')
+@endpush
+
+@push('scripts')
+@endpush
