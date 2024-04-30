@@ -69,7 +69,7 @@
                 </table>
         </div>
 
-        <div class="col-lg-6 overflow-auto">
+        <div class="col-lg-6 over">
             <h4>Popular Article</h2>
                 <table class="table table-bordered table-striped">
                     <thead>
@@ -77,8 +77,6 @@
                             <th>No</th>
                             <th>Title</th>
                             <th>Category</th>
-                            <th>Status</th>
-                            <th>Last Update</th>
                             <th>Views</th>
                             <th>Action</th>
                         </tr>
@@ -90,14 +88,6 @@
                                 <td>{{ $loop->iteration }}</td>
                                 <td>{{ $popular->title }}</td>
                                 <td>{{ $popular->category->name }}</td>
-                                <td>
-                                    @if ($popular->status == 1)
-                                        <span class="badge bg-success text-white">Published</span>
-                                    @else
-                                        <span class="badge bg-danger text-white">Draft</span>
-                                    @endif
-                                </td>
-                                <td>{{ $popular->updated_at }}</td>
                                 <td>{{ $popular->views }}</td>
                                 <td>
                                     <a href="{{ url('articles/edit/' . $popular->id) }}"

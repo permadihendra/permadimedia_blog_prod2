@@ -1,6 +1,6 @@
 // Required Bootstrap js
 import "bootstrap";
-import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
+// import "../../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js";
 
 import "./datatables-simple-demo";
 import "./scripts";
@@ -10,10 +10,10 @@ window.bootstrap = bootstrap;
 
 document.addEventListener("livewire:navigated", (event) => {
     // Dom Load Datatables when wire:navigate
-    const datatablesSimple = document.getElementById("datatablesSimple");
-    if (datatablesSimple) {
-        new simpleDatatables.DataTable(datatablesSimple);
-    }
+    // const datatablesSimple = document.getElementById("datatablesSimple");
+    // if (datatablesSimple) {
+    //     new simpleDatatables.DataTable(datatablesSimple);
+    // }
 
     const sidebarToggle = document.body.querySelector("#sidebarToggle");
     if (sidebarToggle) {

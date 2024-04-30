@@ -12,9 +12,9 @@ use App\Livewire\Backend\ArticleEditWire;
 use App\Livewire\Backend\UserWire;
 
 
-// Route::get('/', function () {
-//     return view('admin');
-// });
+Route::get('/', function () {
+    return view('home');
+});
 
 
 // Route::get('/blog', function () {
