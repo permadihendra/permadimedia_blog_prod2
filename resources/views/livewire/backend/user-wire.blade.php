@@ -6,6 +6,22 @@
         <li class="breadcrumb-item active">List of users</li>
     </ol>
 
+    {{-- Toast Notification
+
+    dispatch event from livewire blade, if the session 'success' is true <- this from the livewire class component --}}
+    @if (session('success'))
+        @script
+            <script>
+                $wire.dispatch('success-toast', {
+                    message: '{{ session('success') }}'
+                });
+            </script>
+        @endscript
+    @endif
+
+    {{-- Toast notification - livewire component  --}}
+    <livewire:toast-notif />
+
     <x-partial.modal-create title="Register User" dataTarget="modalCreate">
         <form wire:submit="store">
             <div class="mb-3 row">

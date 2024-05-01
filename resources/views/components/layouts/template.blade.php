@@ -47,6 +47,8 @@
         </div>
         <div id="layoutSidenav_content">
 
+
+
             {{-- Content Here --}}
             <main>
                 {{ $slot }}
