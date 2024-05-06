@@ -52,7 +52,7 @@
             <div class="mb-3 row">
                 <label for="password" class="col-sm-4 col-form-label">Password</label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control @error('form.password') is-invalid @enderror  "
+                    <input type="password" class="form-control @error('form.password') is-invalid @enderror  "
                         id="password" name="password" wire:model="form.password">
                     @error('form.password')
                         <div class="invalid-feedback">
@@ -65,7 +65,7 @@
             <div class="mb-3 row">
                 <label for="password_confirmation" class="col-sm-4 col-form-label">Confirm Password</label>
                 <div class="col-sm-8">
-                    <input type="text"
+                    <input type="password"
                         class="form-control @error('form.password_confirmation') is-invalid @enderror  "
                         id="password_confirmation" name="password_confirmation" wire:model="form.password_confirmation">
                     @error('form.password_confirmation')

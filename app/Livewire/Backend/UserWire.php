@@ -16,6 +16,7 @@ class UserWire extends Component
 
 
     public function store(){
+    
         $this->form->store();
 
         session()->flash('success', 'New User is created successfully.');

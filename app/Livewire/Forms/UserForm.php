@@ -30,6 +30,8 @@ class UserForm extends Form
         $validated = $this->validate();
 
         User::create($validated);
+
+        $this->reset();
         
     }
 
