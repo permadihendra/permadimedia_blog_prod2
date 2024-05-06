@@ -15,6 +15,20 @@ class UserWire extends Component
     public User $user;
 
 
+
+    public function edit(User $user){
+        $this->form->setUser($user);
+    }
+
+    public function update(){
+        $this->form->update();
+
+        session()->flash('success', 'User Data is updated successfully.');
+        
+        return $this->redirect('/users', navigate: true);
+    }
+
+
     public function store(){
     
         $this->form->store();

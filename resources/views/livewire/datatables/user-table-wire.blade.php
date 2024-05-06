@@ -55,9 +55,12 @@
                         <td>{{ $user->updated_at }}</td>
                         <td>
                             <div class="row">
+                                <button wire:click="$parent.edit({{ $user->id }})" href=""
+                                    class="btn btn-sm btn-secondary" data-bs-toggle="modal"
+                                    data-bs-target="#editUser"><i class="fa fa-edit"></i></button>
                                 <button wire:click="$parent.delete({{ $user->id }})"
                                     wire:confirm="Are you sure want to delete user ID :{{ $user->id }}, {{ $user->name }} ?"
-                                    class="btn btn-danger"> X </button>
+                                    class="btn btn-sm btn-danger"><i class="fa fa-close"></i></button>
                             </div>
                         </td>
                     </tr>
