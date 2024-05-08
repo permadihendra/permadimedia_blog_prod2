@@ -13,8 +13,17 @@ class UserRole
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next): Response
+    public function handle(Request $request, Closure $next, ...$role): Response
     {
-        return $next($request);
+    
+        // Check If the User Role exist in Middleware Array $Roles
+        if (in_array($request->user()->role->name,$role)) {
+            // dump($request->user()->role->name , $role);
+            return $next($request);
+        }
+        else {
+            abort(403);
+        }
+       
     }
 }

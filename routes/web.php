@@ -11,6 +11,8 @@ use App\Livewire\Backend\ArticleCreateWire;
 use App\Livewire\Backend\ArticleEditWire;
 use App\Livewire\Backend\UserWire;
 
+use App\Http\Middleware\UserRole;
+
 
 Route::get('/', function () {
     return view('blog');
@@ -43,9 +45,13 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 
 Route::middleware('auth')->group(function() {
     Route::get('dashboard', Dashboard::class)->name('dashboard');
-Route::get('categories', CategoryPage::class)->name('categories');
-Route::get('articles', ArticleWire::class)->name('articles');
-Route::get('articles/create', ArticleCreateWire::class)->name('articles.create');
-Route::get('articles/edit/{article}', ArticleEditWire::class)->name('article.edit');
-Route::get('users', UserWire::class)->name('users');
+    // Route::get('categories', CategoryPage::class)->name('categories');
+    Route::get('articles', ArticleWire::class)->name('articles');
+    Route::get('articles/create', ArticleCreateWire::class)->name('articles.create');
+    Route::get('articles/edit/{article}', ArticleEditWire::class)->name('article.edit');
+    Route::get('users', UserWire::class)->name('users');
+});
+
+Route::middleware('auth', 'roles:editor,administrator')->group(function(){
+    Route::get('categories', CategoryPage::class)->name('categories');
 });

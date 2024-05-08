@@ -12,6 +12,9 @@ return Application::configure(basePath: dirname(__DIR__))
     )
     ->withMiddleware(function (Middleware $middleware) {
         //
+        $middleware->alias([
+            'roles' => App\Http\Middleware\UserRole::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

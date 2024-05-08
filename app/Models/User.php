@@ -47,9 +47,12 @@ class User extends Authenticatable
         return $this->belongsTo(Roles::class, 'role_id');
      }
 
-     public function hasRole($role){
-        return User::where('role', $role)->exist();
-     }
+    //  public function hasRole($role){
+    //     return User::with('roles')->where('role_id', function ($query) {
+    //         $query->where('name', $role);
+    //     })
+    //     ->exist();
+    //  }
 
 
     protected function casts(): array
