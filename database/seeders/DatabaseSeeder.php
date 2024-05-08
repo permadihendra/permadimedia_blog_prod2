@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
             'name' => "Administrator",
             'email' => "permadi@gmail.com",
             'email_verified_at' => now(),
-            'is_admin' => 1,
+            'role_id' => 1,
             'password' => Hash::make('password'),
             'remember_token' => Str::random(10),
         ]);
@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             CategorySeeder::class,
             ArticleSeeder::class,
+            RoleSeeder::class,
         ]);
     }
 }

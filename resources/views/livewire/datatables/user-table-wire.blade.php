@@ -45,11 +45,14 @@
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
                         <td>
-                            @if ($user->is_admin)
+                            @if ($user->role->name == 'administrator')
                                 <small class="badge bg-success">Admin</small>
-                            @else
+                            @elseif ($user->role->name == 'editor')
+                                <small class="badge bg-primary">Editor</small>
+                            @elseif ($user->role->name == 'user')
                                 <small class="badge bg-secondary">User</small>
                             @endif
+
                         </td>
                         <td>{{ $user->created_at }}</td>
                         <td>{{ $user->updated_at }}</td>
