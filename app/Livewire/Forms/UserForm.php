@@ -33,6 +33,7 @@ class UserForm extends Form
         $this->id = $user->id;
         $this->name = $user->name;
         $this->email = $user->email;
+        $this->password = '';
     }
 
     public function update(){
