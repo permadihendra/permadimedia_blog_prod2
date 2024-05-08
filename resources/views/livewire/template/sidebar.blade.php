@@ -13,19 +13,22 @@
                 <div class="sb-nav-link-icon"><i class="fas fa-newspaper"></i></div>
                 Articles
             </a>
-            <a class="nav-link @if (Route::is('categories')) {{ 'active' }} @endif"
-                href="{{ route('categories') }}" wire:navigate>
-                <div class="sb-nav-link-icon"><i class="fas fa-folder"></i></div>
-                Categories
-            </a>
 
-            <div class="sb-sidenav-menu-heading">Administrator</div>
+            @if (Auth::user()->role->name == 'administrator')
+                <div class="sb-sidenav-menu-heading">Administrator</div>
+                <a class="nav-link @if (Route::is('categories')) {{ 'active' }} @endif"
+                    href="{{ route('categories') }}" wire:navigate>
+                    <div class="sb-nav-link-icon"><i class="fas fa-folder"></i></div>
+                    Categories
+                </a>
+                <a class="nav-link @if (Route::is('users')) {{ 'active' }} @endif"
+                    href="{{ route('users') }}" wire:navigate>
+                    <div class="sb-nav-link-icon"><i class="fas fa-circle-user"></i></div>
+                    Users
+                </a>
+            @endif
 
-            <a class="nav-link @if (Route::is('users')) {{ 'active' }} @endif" href="{{ route('users') }}"
-                wire:navigate>
-                <div class="sb-nav-link-icon"><i class="fas fa-circle-user"></i></div>
-                Users
-            </a>
+
 
             <div class="sb-sidenav-menu-heading">Examples</div>
             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts"
