@@ -10,6 +10,7 @@ use App\Livewire\Backend\ArticleWire;
 use App\Livewire\Backend\ArticleCreateWire;
 use App\Livewire\Backend\ArticleEditWire;
 use App\Livewire\Backend\UserWire;
+use App\Livewire\Backend\UserProfileWire;
 
 use App\Http\Middleware\UserRole;
 
@@ -57,6 +58,7 @@ Route::middleware('auth', 'roles:user,editor,administrator')->group(function(){
     Route::get('articles', ArticleWire::class)->name('articles');
     Route::get('articles/create', ArticleCreateWire::class)->name('articles.create');
     Route::get('articles/edit/{article}', ArticleEditWire::class)->name('article.edit');
+    Route::get('user/profile', UserProfileWire::class)->name('user.profile');
 });
 
 
