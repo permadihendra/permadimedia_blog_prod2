@@ -43,15 +43,24 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 
 // Livewire Routes
 
-Route::middleware('auth')->group(function() {
+// Route::middleware('auth')->group(function() {
+//     Route::get('dashboard', Dashboard::class)->name('dashboard');
+//     // Route::get('categories', CategoryPage::class)->name('categories');
+//     Route::get('articles', ArticleWire::class)->name('articles');
+//     Route::get('articles/create', ArticleCreateWire::class)->name('articles.create');
+//     Route::get('articles/edit/{article}', ArticleEditWire::class)->name('article.edit');
+//     Route::get('users', UserWire::class)->name('users');
+// });
+
+Route::middleware('auth', 'roles:user,editor,administrator')->group(function(){
     Route::get('dashboard', Dashboard::class)->name('dashboard');
-    // Route::get('categories', CategoryPage::class)->name('categories');
     Route::get('articles', ArticleWire::class)->name('articles');
     Route::get('articles/create', ArticleCreateWire::class)->name('articles.create');
     Route::get('articles/edit/{article}', ArticleEditWire::class)->name('article.edit');
-    Route::get('users', UserWire::class)->name('users');
 });
 
-Route::middleware('auth', 'roles:editor,administrator')->group(function(){
+
+Route::middleware('auth', 'roles:administrator')->group(function(){
     Route::get('categories', CategoryPage::class)->name('categories');
+    Route::get('users', UserWire::class)->name('users');
 });
