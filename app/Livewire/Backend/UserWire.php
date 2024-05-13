@@ -39,11 +39,24 @@ class UserWire extends Component
     }
 
     public function delete(User $user){
-        $this->form->delete($user->id);
-
-        session()->flash('success', 'User is deleted successfully.');
         
-        return $this->redirect('/users', navigate: true);
+        // dump($user->role->name);
+
+        if($user->role->name == 'administrator') {
+
+            session()->flash('success', 'User role is ' .$user->role->name. ', can not be deleted');
+            
+            return $this->redirect('/users', navigate: true);
+        }
+
+        else {
+            $this->form->delete($user->id);
+
+            session()->flash('success', 'User is deleted successfully.');
+            
+            return $this->redirect('/users', navigate: true);
+        }
+        
     }
 
     public function cancel(){
