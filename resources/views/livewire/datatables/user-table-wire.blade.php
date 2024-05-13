@@ -32,7 +32,8 @@
                     <th scope="col">#</th>
                     <th scope="col" wire:click="setSortBy('name')">Name <i class="fas fa-sort"></i></th>
                     <th scope="col" wire:click="setSortBy('email')">email <i class="fas fa-sort"></i></th>
-                    <th scope="col" wire:click="setSortBy('is_admin')">Role <i class="fas fa-sort"></i></th>
+                    <th scope="col" wire:click="setSortBy('role_id')">Role <i class="fas fa-sort"></i></th>
+                    <th scope="col" wire:click="setSortBy('is_active')">Status<i class="fas fa-sort"></i></th>
                     <th scope="col" wire:click="setSortBy('created_at')">Created <i class="fas fa-sort"></i></th>
                     <th scope="col">Last Update</th>
                     <th scope="col">Action</th>
@@ -51,6 +52,14 @@
                                 <small class="badge bg-primary">Editor</small>
                             @elseif ($user->role->name == 'user')
                                 <small class="badge bg-secondary">User</small>
+                            @endif
+
+                        </td>
+                        <td>
+                            @if ($user->is_active == 1)
+                                <small class="badge bg-success">Active</small>
+                            @elseif ($user->is_active == 0)
+                                <small class="badge bg-secondary">Inactive</small>
                             @endif
 
                         </td>
