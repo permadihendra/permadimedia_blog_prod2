@@ -7,17 +7,23 @@ use Livewire\Attributes\Layout;
 
 use App\Livewire\Forms\UserForm;
 use App\Models\User;
+use App\Models\Roles;
 
 class UserWire extends Component
 {
 
     public UserForm $form;
     public User $user;
+    public $roles;
 
+
+    public function boot(){
+        $this->roles = Roles::get();
+    }
 
 
     public function edit(User $user){
-        $this->form->setUser($user);
+        $this->form->setUser($user);  
     }
 
     public function update(){

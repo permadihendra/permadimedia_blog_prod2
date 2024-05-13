@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -19,6 +20,15 @@ class LoginController extends Controller
     */
 
     use AuthenticatesUsers;
+
+    protected function credentials(Request $request)
+    {
+        return [
+            'email' => request()->email,
+            'password' => request()->password,
+            'is_active' => 1
+        ];
+    }
 
     /**
      * Where to redirect users after login.

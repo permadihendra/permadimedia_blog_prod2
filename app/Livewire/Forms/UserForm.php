@@ -14,6 +14,8 @@ class UserForm extends Form
     public $id;
     public $name;
     public $email;
+    public $role_id, $role;
+    public $is_active;
     public $password;
     public $old_password;
     public $password_confirmation;
@@ -33,6 +35,9 @@ class UserForm extends Form
         $this->id = $user->id;
         $this->name = $user->name;
         $this->email = $user->email;
+        $this->role_id = $user->role_id;
+        $this->role = $user->role->name;
+        $this->is_active = $user->is_active;
         $this->password = '';
     }
 
@@ -40,9 +45,12 @@ class UserForm extends Form
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255'], //'unique:users'
+            'role_id' => ['required'],
             'password' => ['nullable', 'string', 'min:8', 'confirmed'],
             'password_confirmation' => ['nullable', 'string', 'min:8', 'required_with:password'],
         ]);
+
+        // dump($this->all());
 
         $this->user->update($this->all());
     }

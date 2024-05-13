@@ -123,6 +123,43 @@
                 </div>
             </div>
 
+            <div class="mb-3 row">
+                <label for="role" class="col-sm-4 col-form-label">User Role</label>
+                <div class="col-sm-8">
+
+                    <select wire:model="form.role_id" class="form-select">
+                        {{-- <option disabled>{{ $form->role }}</option> --}}
+
+                        @foreach ($roles as $role)
+                            <option wire:key="{{ $role->id }}" value="{{ $role->id }}">{{ $role->name }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                    @error('form.role_id')
+                        <div class="invalid-feedback">
+                            <span class="error">{{ $message }}</span>
+                        </div>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="mb-3 row">
+                <label for="status" class="col-sm-4 col-form-label">User Status</label>
+                <div class="col-sm-8">
+                    <select wire:model="form.is_active" class="form-select">
+                        <option value="0">Inactive</option>
+                        <option value="1">Active</option>
+                    </select>
+
+                    @error('form.is_active')
+                        <div class="invalid-feedback">
+                            <span class="error">{{ $message }}</span>
+                        </div>
+                    @enderror
+                </div>
+            </div>
+
             <small class="text-primary">Leave Password blank if you don't change the password</small>
 
             <div class="mb-3 row">
