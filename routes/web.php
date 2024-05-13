@@ -12,12 +12,14 @@ use App\Livewire\Backend\ArticleEditWire;
 use App\Livewire\Backend\UserWire;
 use App\Livewire\Backend\UserProfileWire;
 
+use App\Livewire\Frontend\BlogWire;
+
 use App\Http\Middleware\UserRole;
 
 
-Route::get('/', function () {
-    return view('blog');
-});
+// Route::get('/', function () {
+//     return view('blog');
+// });
 
 
 // Route::get('/blog', function () {
@@ -57,6 +59,12 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 //     Route::get('users', UserWire::class)->name('users');
 // });
 
+// Blog Route
+Route::middleware('web')->group(function(){
+    Route::get('/', BlogWire::class)->name('blog.home');
+});
+
+// Admin Routes
 Route::middleware('auth', 'roles:user,editor,administrator')->group(function(){
     Route::get('dashboard', Dashboard::class)->name('dashboard');
     Route::get('articles', ArticleWire::class)->name('articles');
