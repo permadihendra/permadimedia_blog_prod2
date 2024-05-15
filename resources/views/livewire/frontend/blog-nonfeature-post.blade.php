@@ -1,6 +1,6 @@
 <div>
     <!-- Nested row for non-featured blog posts-->
-    <div class="row">
+    <div class="row" id="paginated-article">
 
         @foreach ($popularArticle as $article)
             <div class="col-lg-6">
@@ -27,8 +27,8 @@
     <!-- Pagination-->
     <nav aria-label="Pagination">
         <hr class="my-0" />
-        <ul class="pagination justify-content-center my-4">
-            {{ $popularArticle->links() }}
-        </ul>
+        <div class="pagination col-sm-auto justify-content-center my-4">
+            {{ $popularArticle->onEachSide(2)->links(data: ['scrollTo' => '#paginated-article']) }}
+        </div>
     </nav>
 </div>
