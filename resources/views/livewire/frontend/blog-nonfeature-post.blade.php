@@ -11,6 +11,7 @@
                     <div class="card-body">
                         <div class="small text-muted">
                             {{ $article->updated_at->format('M d, Y') }}
+                            <a href="{{ url('category/' . $article->category->slug) }}">{{ $article->category->name }}</a>
                         </div>
                         <h2 class="card-title h4">{{ $article->title }}</h2>
                         <p class="card-text">
