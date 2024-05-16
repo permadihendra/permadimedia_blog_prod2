@@ -8,7 +8,8 @@ class BlogSearch extends Component
 {
     public $keyword;
 
-    public function search(){
+    public function search()
+    {
         $this->dispatch('search', keyword: $this->keyword)->to(BlogNonfeaturePost::class);
     }
 

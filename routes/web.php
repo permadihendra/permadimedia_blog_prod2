@@ -3,6 +3,7 @@
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\CategoryController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 use App\Livewire\Backend\Dashboard;
 use App\Livewire\Backend\CategoryPage;
