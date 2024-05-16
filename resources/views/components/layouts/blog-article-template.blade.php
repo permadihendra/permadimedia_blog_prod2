@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     @stack('meta-seo')
-    <title>Blog Home - Start Bootstrap Template</title>
+    <title>Blog - permadimedia</title>
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     {{-- Inluce Vite Asset Bundling --}}
@@ -24,7 +24,7 @@
     <!-- Page header with logo and tagline-->
     <header class="py-5 bg-light border-bottom mb-4">
         <div class="container">
-            {{ $slot }}
+            <h1>Welcome to Blog</h1>
         </div>
     </header>
     <!-- Page content-->
@@ -32,11 +32,7 @@
         <div class="row">
             <!-- Blog entries-->
             <div class="col-lg-8">
-                <!-- Featured blog post-->
-                <livewire:frontend.blog-feature-post />
-
-                <!-- Nested row for non-featured blog posts-->
-                <livewire:frontend.blog-nonfeature-post />
+                {{ $slot }}
             </div>
             <!-- Side widgets-->
             <div class="col-lg-4">
