@@ -145,9 +145,18 @@
                     buttons: {
                         lfm: LFMButton
                     },
+
                     callbacks: {
+                        // onInit: function() {
+                        //     $('pre code').each(function(i, block) {
+                        //         hljs.highlightBlock(block);
+                        //     });
+                        // },
                         onChange: function(contents, $editable) {
                             @this.set('desc', contents);
+                            // $('pre code').each(function(i, block) {
+                            //     hljs.highlightBlock(block);
+                            // });
                         }
                     }
                 })

@@ -9,5 +9,17 @@
         <p class="card-text">
             {!! $article->desc !!}
         </p>
+
     </div>
 </div>
+
+@push('css')
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
+@endpush
+
+@push('scripts')
+    <script>
+        hljs.highlightAll();
+    </script>
+@endpush

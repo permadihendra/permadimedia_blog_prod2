@@ -14,6 +14,7 @@
     {{-- Default Bootsstrap CSS and JS --}}
     @vite(['resources/scss/bootstrap.scss', 'resources/js/bootstrap.js'])
     <link rel="stylesheet" href="{{ asset('css/blog/custom.css') }}">
+    @stack('css')
 
 </head>
 
@@ -56,6 +57,7 @@
             </p>
         </div>
     </footer>
+    @stack('scripts')
 </body>
 
 </html>
