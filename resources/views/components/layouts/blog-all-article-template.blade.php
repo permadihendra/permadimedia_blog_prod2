@@ -51,7 +51,7 @@
 
 
                 <!-- Side widget-->
-                <livewire:frontend.blog-sidewidget />
+                {{-- <livewire:frontend.blog-sidewidget /> --}}
 
             </div>
         </div>

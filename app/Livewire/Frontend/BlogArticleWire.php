@@ -20,6 +20,8 @@ class BlogArticleWire extends Component
     #[Layout('components.layouts.blog-article-template')]
     public function render()
     {
-        return view('livewire.frontend.blog-article-wire');
+        return view('livewire.frontend.blog-article-wire')->with([
+            'related_articles' => Article::where('category_id', $this->article->category_id)->orderBy('updated_at', 'DESC')->take(3)->get(),
+        ]);
     }
 }

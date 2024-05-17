@@ -52,7 +52,7 @@
                 <livewire:frontend.blog-categories />
 
                 <!-- Side widget-->
-                <livewire:frontend.blog-sidewidget />
+                {{-- <livewire:frontend.blog-sidewidget /> --}}
 
             </div>
         </div>

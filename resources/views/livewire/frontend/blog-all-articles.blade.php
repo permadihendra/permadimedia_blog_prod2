@@ -25,7 +25,7 @@
         @forelse ($articles as $article)
             <div>
                 <!-- Blog post-->
-                <div wire:ignore.self class="card card-article  mb-2" data-aos="fade-up">
+                <div wire:ignore.self class="card card-article mb-2" data-aos="fade-up">
 
                     <div class="card-body">
                         <div class="row">
