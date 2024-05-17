@@ -1,7 +1,7 @@
 <!-- Responsive navbar-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <a wire:navigate class="navbar-brand" href="{{ route('blog.home') }}">permadimedia</a>
+        <a wire:navigate class="navbar-brand" href="{{ route('blog-home') }}">permadimedia</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar"
             aria-controls="offcanvasDarkNavbar" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -16,16 +16,21 @@
             <div class="offcanvas-body ps-4">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link @if (Route::is('blog-home')) {{ 'active' }} @endif"
+                            href="{{ route('blog-home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#!">About</a>
+                        <a class="nav-link @if (Route::is('blog-all-articles')) {{ 'active' }} @endif"
+                            href="{{ route('blog-all-articles') }}">Articles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#!">Contact</a>
+                        <a class="nav-link" href="">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Blog</a>
+                        <a class="nav-link" href="">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="#">Blog</a>
                     </li>
                 </ul>
             </div>

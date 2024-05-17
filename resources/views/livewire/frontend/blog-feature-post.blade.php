@@ -9,7 +9,7 @@
         <p class="card-text">
             {{ Str::limit(strip_tags($latestArticle->desc), 250, '...') }}
         </p>
-        <a wire:navigate class="btn btn-primary" href="{{ route('blog.article', $latestArticle->slug) }}">Read more
+        <a wire:navigate class="btn btn-primary" href="{{ route('blog-article', $latestArticle->slug) }}">Read more
             →</a>
     </div>
 </div>

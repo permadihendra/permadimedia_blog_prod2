@@ -16,6 +16,7 @@ use App\Livewire\Backend\UserProfileWire;
 use App\Livewire\Frontend\BlogWire;
 
 use App\Http\Middleware\UserRole;
+use App\Livewire\Frontend\BlogAllArticles;
 use App\Livewire\Frontend\BlogArticleWire;
 
 // Route::get('/', function () {
@@ -62,8 +63,9 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 
 // Blog Route
 Route::middleware('web')->group(function () {
-    Route::get('/', BlogWire::class)->name('blog.home');
-    Route::get('/article/{slug}', BlogArticleWire::class)->name('blog.article');
+    Route::get('/', BlogWire::class)->name('blog-home');
+    Route::get('/article/{slug}', BlogArticleWire::class)->name('blog-article');
+    Route::get('/all-articles', BlogAllArticles::class)->name('blog-all-articles');
 });
 
 // Admin Routes

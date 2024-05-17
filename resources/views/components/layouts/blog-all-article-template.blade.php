@@ -31,12 +31,15 @@
         <div class="row">
             <!-- Blog entries-->
             <div class="col-lg-8">
-                {{ $slot }}
+                <!-- Search widget-->
+                <livewire:frontend.blog-search-article />
+                <div>
+                    {{ $slot }}
+                </div>
             </div>
             <!-- Side widgets-->
             <div class="col-lg-4">
-                <!-- Search widget-->
-                <livewire:frontend.blog-search />
+
 
                 <!-- Categories widget-->
                 <livewire:frontend.blog-categories />
