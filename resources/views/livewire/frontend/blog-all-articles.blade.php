@@ -1,8 +1,26 @@
 <div>
     <!-- Nested row for non-featured blog posts-->
-    <div id="paginated-article">
 
-        @foreach ($articles as $article)
+    <div id="paginated-article">
+        @if ($keyword)
+            <div class="row">
+                <div class="col">
+                    <p class="text-muted">Showing results of keyword : {{ $keyword }}</p>
+                </div>
+            </div>
+        @endif
+        @if ($category_id)
+            <span>category </span>
+            <a href=""
+                class="badge bg-secondary">{{ \App\Models\Category::where('id', $category_id)->first()->name }}
+            </a>
+            <a href="" class="badge bg-warning">
+                X
+            </a>
+        @endif
+
+
+        @forelse ($articles as $article)
             <div>
                 <!-- Blog post-->
                 <div class="card card-article  mb-2">
@@ -40,7 +58,13 @@
                 </div>
 
             </div>
-        @endforeach
+        @empty
+            <div>
+                <div class="card card-article  mb-2">
+                    <p>No Article Found</p>
+                </div>
+            </div>
+        @endforelse
 
     </div>
     <!-- Pagination-->

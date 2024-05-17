@@ -14,6 +14,7 @@ class BlogAllArticles extends Component
     use WithPagination;
 
     public $keyword;
+    public $category_id = ''; //must defined empty string
 
     #[On('search')]
     public function getArticle($keyword)
@@ -22,11 +23,23 @@ class BlogAllArticles extends Component
         $this->keyword = $keyword;
     }
 
+
+    #[On('get-article-by-category')]
+    public function getArticleByCategory($slug)
+    {
+        // dump($slug);
+        $this->category_id = $slug;
+    }
     #[Layout('components.layouts.blog-all-article-template')]
     public function render()
     {
         return view('livewire.frontend.blog-all-articles')->with([
-            'articles' => Article::search($this->keyword)->where('status', 1)->orderBy('created_at', 'DESC')->paginate(8),
+            'articles' => Article::search($this->keyword)
+                ->where('status', 1)->orderBy('created_at', 'DESC')
+                ->when($this->category_id !== '', function ($query) {
+                    $query->where('category_id', $this->category_id);
+                })
+                ->paginate(8),
         ]);
     }
 }
