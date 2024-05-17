@@ -17,3 +17,10 @@
     object-fit: contain;
     border-radius: calc(0.24rem - 1px);
 }
+
+.card-article {
+    border-radius: 0;
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+}

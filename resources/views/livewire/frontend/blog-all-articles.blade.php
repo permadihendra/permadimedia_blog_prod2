@@ -5,19 +5,22 @@
         @foreach ($articles as $article)
             <div>
                 <!-- Blog post-->
-                <div class="card mb-4">
+                <div class="card card-article  mb-2">
 
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-9">
-                                <div class="small text-muted">
+
+                                <h2 class="card-title h4"><a wire:navigate
+                                        class="link-dark link-offset-2 link-underline-opacity-0"
+                                        href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h2>
+
+                                <div class="small text-muted mb-1">
                                     {{ $article->updated_at->format('M d, Y') }}
                                     <a wire:navigate
                                         href="{{ url('article/' . $article->category->slug) }}">{{ $article->category->name }}</a>
                                 </div>
-                                <h2 class="card-title h4"><a wire:navigate
-                                        class="link-dark link-offset-2 link-underline-opacity-0"
-                                        href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h2>
+
                                 <p class="card-text">
                                     {{ Str::limit(strip_tags($article->desc), 150, '...') }}
                                 </p>
@@ -42,7 +45,6 @@
     </div>
     <!-- Pagination-->
     <nav aria-label="Pagination">
-        <hr class="my-0" />
         <div class="pagination col-sm-auto justify-content-center my-4">
             {{ $articles->onEachSide(2)->links(data: ['scrollTo' => '#paginated-article']) }}
         </div>

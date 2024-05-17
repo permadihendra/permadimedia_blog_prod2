@@ -17,8 +17,9 @@ class Article extends Model
         return $this->belongsTo(Category::class);
     }
 
-     // Scope search to add search functionality in eloquent query
-     public function scopeSearch($query, $value){
-        $query->where('title', 'like', "%{$value}%")->orWhere('category', 'like', "%{$value}%");
+    // Scope search to add search functionality in eloquent query
+    public function scopeSearch($query, $value)
+    {
+        $query->where('title', 'like', "%{$value}%")->orWhere('desc', 'like', "%{$value}%")->orWhere('category', 'like', "%{$value}%");
     }
 }
