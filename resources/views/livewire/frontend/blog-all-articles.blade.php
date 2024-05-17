@@ -25,7 +25,7 @@
         @forelse ($articles as $article)
             <div>
                 <!-- Blog post-->
-                <div class="card card-article  mb-2">
+                <div wire:ignore.self class="card card-article  mb-2" data-aos="fade-up">
 
                     <div class="card-body">
                         <div class="row">
@@ -35,16 +35,15 @@
                                         class="link-dark link-offset-2 link-underline-opacity-0"
                                         href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h2>
 
-                                <div class="small text-muted mb-1">
+                                <span class="small text-muted mb-1">
                                     {{ $article->updated_at->format('M d, Y') }}
-                                    <a wire:navigate
-                                        href="{{ url('article/' . $article->category->slug) }}">{{ $article->category->name }}</a>
-                                </div>
+                                    <span class="text-success"> {{ $article->category->name }} </span>
+                                </span>
 
                                 <p class="card-text">
                                     {{ Str::limit(strip_tags($article->desc), 150, '...') }}
                                 </p>
-                                <a wire:navigate class="btn btn-primary"
+                                <a wire:navigate class="unstyled-link"
                                     href="{{ url('article/' . $article->slug) }}">Read
                                     more
                                     →</a>
@@ -76,3 +75,15 @@
         </div>
     </nav>
 </div>
+
+@push('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+@endpush
+
+@push('scripts')
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+@endpush

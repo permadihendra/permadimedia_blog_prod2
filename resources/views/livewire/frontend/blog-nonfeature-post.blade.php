@@ -5,15 +5,14 @@
         @foreach ($popularArticle as $article)
             <div class="col-lg-6">
                 <!-- Blog post-->
-                <div class="card mb-4">
+                <div wire:ignore.self class="card mb-4" data-aos="fade-up">
                     <a wire:navigate href="{{ url('article/' . $article->slug) }}"><img
                             class="card-img-top article-list-img" src="{{ asset('storage/' . $article->img) }}"
                             alt="{{ $article->title }}" width="300" height="150" /></a>
                     <div class="card-body">
                         <div class="small text-muted">
                             {{ $article->updated_at->format('M d, Y') }}
-                            <a wire:navigate
-                                href="{{ url('article/' . $article->category->slug) }}">{{ $article->category->name }}</a>
+                            <span class="text-success">{{ $article->category->name }}</span>
                         </div>
                         <h2 class="card-title h4"><a wire:navigate
                                 class="link-dark link-offset-2 link-underline-opacity-0"
@@ -21,7 +20,7 @@
                         <p class="card-text">
                             {{ Str::limit(strip_tags($article->desc), 150, '...') }}
                         </p>
-                        <a wire:navigate class="btn btn-primary" href="{{ url('article/' . $article->slug) }}">Read more
+                        <a wire:navigate class="unstyled-link" href="{{ url('article/' . $article->slug) }}">Read more
                             →</a>
                     </div>
                 </div>
@@ -38,3 +37,10 @@
         </div>
     </nav>
 </div>
+
+@push('scripts')
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+@endpush

@@ -28,12 +28,15 @@
 
     </header>
     <!-- Page content-->
-    <div class="container">
+    <div class="container min-vh-100">
         <div class="row">
             <!-- Blog entries-->
             <div class="col-lg-8">
-                <!-- Search widget-->
-                <livewire:frontend.blog-search-article />
+                @if (Route::is('blog-all-articles'))
+                    <!-- Search widget-->
+                    <livewire:frontend.blog-search-article />
+                @endif
+
                 <div>
                     {{ $slot }}
                 </div>
@@ -41,9 +44,11 @@
             <!-- Side widgets-->
             <div class="col-lg-4">
 
+                @if (Route::is('blog-all-articles'))
+                    <!-- Categories widget-->
+                    <livewire:frontend.blog-categories />
+                @endif
 
-                <!-- Categories widget-->
-                <livewire:frontend.blog-categories />
 
                 <!-- Side widget-->
                 <livewire:frontend.blog-sidewidget />
@@ -51,14 +56,10 @@
             </div>
         </div>
     </div>
+
     <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">
-                Copyright &copy; Your Website 2023
-            </p>
-        </div>
-    </footer>
+    <x-layouts.footer />
+
     @stack('scripts')
 </body>
 

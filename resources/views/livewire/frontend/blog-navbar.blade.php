@@ -16,21 +16,16 @@
             <div class="offcanvas-body ps-4">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::is('blog-home')) {{ 'active' }} @endif"
+                        <a wire:navigate class="nav-link @if (Route::is('blog-home')) {{ 'active' }} @endif"
                             href="{{ route('blog-home') }}">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @if (Route::is('blog-all-articles')) {{ 'active' }} @endif"
+                        <a wire:navigate class="nav-link @if (Route::is('blog-all-articles')) {{ 'active' }} @endif"
                             href="{{ route('blog-all-articles') }}">Articles</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="">Contact</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" aria-current="page" href="#">Blog</a>
+                        <a wire:navigate class="nav-link @if (Route::is('blog-about')) {{ 'active' }} @endif"
+                            href="{{ route('blog-about') }}">About</a>
                     </li>
                 </ul>
             </div>

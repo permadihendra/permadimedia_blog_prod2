@@ -18,6 +18,7 @@ use App\Livewire\Frontend\BlogWire;
 use App\Http\Middleware\UserRole;
 use App\Livewire\Frontend\BlogAllArticles;
 use App\Livewire\Frontend\BlogArticleWire;
+use App\Livewire\Frontend\BlogAbout;
 
 // Route::get('/', function () {
 //     return view('blog');
@@ -66,6 +67,7 @@ Route::middleware('web')->group(function () {
     Route::get('/', BlogWire::class)->name('blog-home');
     Route::get('/article/{slug}', BlogArticleWire::class)->name('blog-article');
     Route::get('/all-articles', BlogAllArticles::class)->name('blog-all-articles');
+    Route::get('/about', BlogAbout::class)->name('blog-about');
 });
 
 // Admin Routes

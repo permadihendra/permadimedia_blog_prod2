@@ -13,8 +13,12 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     {{-- Inluce Vite Asset Bundling --}}
     {{-- Default Bootsstrap CSS and JS --}}
-    @vite(['resources/scss/bootstrap.scss', 'resources/js/bootstrap.js'])
+
+    @stack('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/blog/custom.css') }}">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    @vite(['resources/scss/bootstrap.scss', 'resources/js/bootstrap.js'])
 
 </head>
 
@@ -54,13 +58,8 @@
         </div>
     </div>
     <!-- Footer-->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">
-                Copyright &copy; Your Website 2023
-            </p>
-        </div>
-    </footer>
+    <x-layouts.footer />
+    @stack('scripts')
 </body>
 
 </html>
