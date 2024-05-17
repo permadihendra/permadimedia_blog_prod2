@@ -1,3 +1,5 @@
+@section('title', 'permadimedia - Articles')
+
 <div>
     <!-- Nested row for non-featured blog posts-->
 
@@ -50,8 +52,8 @@
                             <div class="col-lg-3">
                                 <a wire:navigate href="{{ url('article/' . $article->slug) }}"><img
                                         class="card-img-top article-list-img"
-                                        src="{{ asset('storage/' . $article->img) }}" alt="..." width="300"
-                                        height="150" /></a>
+                                        src="{{ asset('storage/' . $article->img) }}" alt="{{ $article->title }}"
+                                        width="300" height="150" /></a>
                             </div>
                         </div>
                     </div>

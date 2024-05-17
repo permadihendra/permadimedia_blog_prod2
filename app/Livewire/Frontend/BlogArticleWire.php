@@ -14,7 +14,7 @@ class BlogArticleWire extends Component
 
     public function mount($slug)
     {
-        $this->article = Article::where('slug', $slug)->first();
+        $this->article = Article::where('slug', $slug)->firstOrFail();
     }
 
     #[Layout('components.layouts.blog-article-template')]

@@ -8,7 +8,7 @@
                 <div class="card mb-4">
                     <a wire:navigate href="{{ url('article/' . $article->slug) }}"><img
                             class="card-img-top article-list-img" src="{{ asset('storage/' . $article->img) }}"
-                            alt="..." width="300" height="150" /></a>
+                            alt="{{ $article->title }}" width="300" height="150" /></a>
                     <div class="card-body">
                         <div class="small text-muted">
                             {{ $article->updated_at->format('M d, Y') }}
