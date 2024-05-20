@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-4">
                 <div class="input-group mb-3">
-                    <span class="input-group-text" id="basic-addon1"><i class="fbutton fa-search"></i></span>
+                    <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
                     <input wire:model.live.debounce.300ms="search" type="text" class="form-control"
                         placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
                 </div>
