@@ -10,23 +10,23 @@
         <div class="row">
             <div class="col-sm-7 mb-3">
                 <label for="title" class="form-label" id="title-label">Title</label>
-                <input wire:model.blur="title" name="title" type="text"
-                    class="form-control @error('title') is-invalid @enderror" id="title" />
-                @error('title')
+                <input wire:model.blur="form.title" name="title" type="text"
+                    class="form-control @error('form.title') is-invalid @enderror" id="title" />
+                @error('form.title')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
             <div class="col-sm-auto mb-3">
                 <label for="category" class="form-label" id="category-label">Category</label>
-                <select wire:model.blur="category_id" name="category_id" id="category"
-                    class="form-control @error('category_id') is-invalid @enderror">
+                <select wire:model.blur="form.category_id" name="category_id" id="category"
+                    class="form-control @error('form.category_id') is-invalid @enderror">
                     <option value="">Select category</option>
                     @foreach ($categories as $category)
                         <option :key={{ $category->id }} value="{{ $category->id }}">{{ $category->name }}</option>
                     @endforeach
                 </select>
-                @error('category_id')
+                @error('form.category_id')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
@@ -47,10 +47,11 @@
         <div class="mb-3">
             <label for="description" class="form-label" id="description-label">Description</label>
             <div wire:ignore>
-                <textarea name="content" class="form-control @error('desc') is-invalid @enderror" id="summernote-editor" rows="5"></textarea>
+                <textarea name="content" class="form-control @error('form.desc') is-invalid @enderror" id="summernote-editor"
+                    rows="5"></textarea>
             </div>
-            <input type="hidden" wire:model.blur="desc">
-            @error('desc')
+            <input type="hidden" wire:model.blur="form.desc">
+            @error('form.desc')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
@@ -62,17 +63,17 @@
         <div class="mb-3">
             <label for="image" class="form-label" id="image_label">Image <small class="text-muted">(Max. 2
                     MB)</small></label>
-            <input wire:model.blur="img" name="img" type="file"
-                class="form-control @error('img') is-invalid @enderror" id="image">
-            @error('img')
+            <input wire:model.blur="form.img" name="img" type="file"
+                class="form-control @error('form.img') is-invalid @enderror" id="image">
+            @error('form.img')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
         <div class="mb-3 col-3">
             <label for="publish_date" class="form-label" id="publishdate_label">Publish Date</label>
-            <input wire:model.blur="publish_date" name="publish_date" type="date"
-                class="form-control @error('publish_date') is-invalid @enderror" id="publish_date" class="">
-            @error('publish_date')
+            <input wire:model.blur="form.publish_date" name="publish_date" type="date"
+                class="form-control @error('form.publish_date') is-invalid @enderror" id="publish_date" class="">
+            @error('form.publish_date')
                 <span class="text-danger">{{ $message }}</span>
             @enderror
         </div>
@@ -154,7 +155,7 @@
                         //     });
                         // },
                         onChange: function(contents, $editable) {
-                            @this.set('desc', contents);
+                            @this.set('form.desc', contents);
                             // $('pre code').each(function(i, block) {
                             //     hljs.highlightBlock(block);
                             // });

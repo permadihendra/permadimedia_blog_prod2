@@ -87,11 +87,14 @@ class ArticleForm extends Form
         $validated = $this->validate();
 
         $file = $this->img; // img
-        $filename = uniqid() . '.' . $this->img->extension(); //12763dshd.jpg
-        $file_path = $this->img->storeAs('backend/images', $filename, 'public'); // store file in "backend/images" folder public and get the full path
 
+        if ($this->img) {
+            $filename = uniqid() . '.' . $this->img->extension(); //12763dshd.jpg
+            $file_path = $this->img->storeAs('backend/images', $filename, 'public'); // store file in "backend/images" folder public and get the full path
+            $validated['img'] = $file_path;
+        }
         // Append Default values
-        $validated['img'] = $file_path;
+
         $validated['slug'] =  Str::slug($this->title);
         $validated['views'] = 0;
         $validated['status'] = 0;
@@ -99,9 +102,9 @@ class ArticleForm extends Form
 
         Article::create($validated);
 
-        session()->flash('success', 'Article is created successfully.');
+        // session()->flash('success', 'Article is created successfully.');
 
-        return $this->redirect('/articles', navigate: true);
+        // return $this->redirect('/articles', navigate: true);
     }
 
     public function update()

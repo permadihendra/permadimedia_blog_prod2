@@ -76,14 +76,13 @@
     </nav>
 </div>
 
-@push('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-@endpush
+{{-- @push('css') --}}
+@assets
+@endassets
+{{-- @endpush --}}
 
-@push('scripts')
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
-@endpush
+{{-- @push('scripts') --}}
+@script
+@endscript
+
+{{-- @endpush --}}

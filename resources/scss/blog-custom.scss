@@ -1,0 +1,32 @@
+// Custom Blog Template
+
+.featured-img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    border-radius: calc(0.24rem - 1px);
+}
+
+.article-display-img {
+    width: 100%;
+    object-fit: cover;
+    border-radius: calc(0.24rem - 1px);
+}
+
+.article-list-img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    border-radius: calc(0.24rem - 1px);
+}
+
+.card-article {
+    border-radius: 0;
+    border-right: 0;
+    border-left: 0;
+    border-top: 0;
+}
+
+.unstyled-link {
+    text-decoration: none;
+}

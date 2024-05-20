@@ -13,8 +13,11 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     {{-- Inluce Vite Asset Bundling --}}
     {{-- Default Bootsstrap CSS and JS --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     @vite(['resources/scss/bootstrap.scss', 'resources/js/bootstrap.js'])
-    <link rel="stylesheet" href="{{ asset('css/blog/custom.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('css/blog/custom.css') }}"> --}}
+
     @stack('css')
 
 </head>
@@ -61,6 +64,10 @@
     <x-layouts.footer />
 
     @stack('scripts')
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
