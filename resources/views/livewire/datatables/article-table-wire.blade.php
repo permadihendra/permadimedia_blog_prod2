@@ -77,6 +77,9 @@
                             <div>
                                 <a href="{{ route('article.edit', $article->id) }}" class="btn btn-outline-primary"
                                     wire:navigate>Details</a>
+                                <button type="button" wire:click="$parent.changeStatus({{ $article->id }})"
+                                    wire:confirm ="Are you sure want to {{ $article->status == 0 ? 'Publish' : 'Drop' }} this article ? : {{ $article->title }}"
+                                    class="btn btn-outline-secondary">{{ $article->status == 0 ? 'Publish' : 'Drop' }}</button>
                                 <button type="button" wire:click="$parent.delete({{ $article->id }})"
                                     wire:confirm ="Are you sure want to delete this article ? : {{ $article->title }}"
                                     class="btn btn-outline-danger">Delete</button>

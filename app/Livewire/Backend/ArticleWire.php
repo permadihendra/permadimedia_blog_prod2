@@ -16,14 +16,16 @@ use App\Models\Category;
 class ArticleWire extends Component
 {
     public ArticleForm $form;
-   
-    public function boot(){
-        $this->articles = Article::latest()->get();
-         // Load category data
-        $this->categories = Category::orderBy('name', 'ASC')->get();
+
+    public function boot()
+    {
+        // $this->articles = Article::latest()->get();
+        // // Load category data
+        // $this->categories = Category::orderBy('name', 'ASC')->get();
     }
 
-    public function create(){
+    public function create()
+    {
         return $this->redirect('/articles/create', navigate: true);
     }
 
@@ -31,7 +33,18 @@ class ArticleWire extends Component
     //     return $this->redirect('/articles/edit/',$id, navigate: true);
     // }
 
-    public function delete(Article $article){
+    public function changeStatus(Article $article)
+    {
+        // dump($article);
+        $this->form->changeStatus($article);
+
+        session()->flash('success', 'Article status updated successfully.');
+
+        return $this->redirect('/articles', navigate: true);
+    }
+
+    public function delete(Article $article)
+    {
 
         // dump($article);
         $this->form->delete($article);
@@ -43,7 +56,8 @@ class ArticleWire extends Component
         return $this->redirect('/articles', navigate: true);
     }
 
-    public function cancel(){
+    public function cancel()
+    {
         return $this->redirect('/articles', navigate: true);
     }
 
