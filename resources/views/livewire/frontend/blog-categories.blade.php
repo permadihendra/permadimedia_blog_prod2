@@ -7,7 +7,7 @@
                 <div class="row">
                     @foreach ($categories as $category)
                         <span><a wire:click="filterByCategory('{{ $category->id }}')"
-                                class="btn btn-sm badge bg-secondary">{{ $category->name }}</a>
+                                class="btn btn-sm badge badge-custom bg-secondary">{{ $category->name }}</a>
                         </span>
                     @endforeach
                 </div>

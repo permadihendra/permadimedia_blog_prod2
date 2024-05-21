@@ -37,16 +37,22 @@
 
                                 <span class="small text-muted mb-1">
                                     {{ $article->updated_at->format('M d, Y') }}
-                                    <span class="text-success"> {{ $article->category->name }} </span>
                                 </span>
 
-                                <p class="card-text">
+                                <p class="card-text mb-1">
                                     {{ Str::limit(strip_tags($article->desc), 150, '...') }}
                                 </p>
-                                <a wire:navigate class="unstyled-link"
-                                    href="{{ url('article/' . $article->slug) }}">Read
-                                    more
-                                    →</a>
+                                <div class="col">
+                                    <div class="mb-1">
+                                        <span class="small text-success"> {{ $article->category->name }} </span>
+                                    </div>
+                                    <div>
+                                        <a wire:navigate class="unstyled-link"
+                                            href="{{ url('article/' . $article->slug) }}">Read
+                                            more
+                                            →</a>
+                                    </div>
+                                </div>
                             </div>
                             <div class="col-lg-3">
                                 <a wire:navigate href="{{ url('article/' . $article->slug) }}"><img
