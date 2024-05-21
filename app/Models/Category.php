@@ -13,7 +13,13 @@ class Category extends Model
 
     protected $guarded = ['id', 'timestamps'];
 
-    public function category():HasMany {
+    public function category()
+    {
         return $this->hasMany(Article::class);
+    }
+
+    public function scopeSearch($query, $value)
+    {
+        $query->where('name', 'like', "%{$value}%");
     }
 }

@@ -83,7 +83,7 @@
 
     </x-partial.modal-edit>
 
-    <div class="card mb-4">
+    {{-- <div class="card mb-4">
         <div class="card-body">
             <table id="datatablesSimple">
                 <thead>
@@ -129,6 +129,6 @@
 
         </tbody>
         </table>
-    </div>
-</div>
+    </div> --}}
+    <livewire:datatables.category-table-wire />
 </div>
