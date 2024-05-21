@@ -21,7 +21,11 @@ class BlogArticleWire extends Component
     public function render()
     {
         return view('livewire.frontend.blog-article-wire')->with([
-            'related_articles' => Article::where('category_id', $this->article->category_id)->orderBy('updated_at', 'DESC')->take(3)->get(),
+            'related_articles' => Article::where('category_id', $this->article->category_id)
+                ->where('id', '!=', $this->article->id)
+                ->orderBy('updated_at', 'DESC')
+                ->take(3)
+                ->get(),
         ]);
     }
 }
