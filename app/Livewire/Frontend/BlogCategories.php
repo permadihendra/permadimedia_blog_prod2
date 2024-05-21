@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend;
 
+use Illuminate\Database\Eloquent\Builder;
 use Livewire\Component;
 
 use App\Models\Category;
@@ -20,7 +21,12 @@ class BlogCategories extends Component
     public function render()
     {
         return view('livewire.frontend.blog-categories')->with([
-            'categories' => Category::orderBy('name')->get(),
+            // 'categories' => Category::orderBy('name')->get(),
+            'categories' => Category::whereHas('article', function (Builder $query) {
+                $query->where('status', 1);
+            })->withCount(['article' => function ($query) {
+                $query->where('status', 1);
+            }])->latest()->get(),
         ]);
     }
 }

@@ -13,7 +13,7 @@ class Category extends Model
 
     protected $guarded = ['id', 'timestamps'];
 
-    public function category()
+    public function article()
     {
         return $this->hasMany(Article::class);
     }
