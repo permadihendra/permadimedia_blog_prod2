@@ -20,10 +20,21 @@
 
 
             <div class="d-flex justify-content-end">
-                <a href="https://www.facebook.com" class="btn btn-link text-decoration-none me-2">
+                <a class="btn text-decoration-none me-1 text-primary-emphasis">
+                    <i class="fa fa-share"></i> Share
+                </a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u={{ url()->current() }}" target="_blank"
+                    class="btn btn-link text-decoration-none me-1">
                     <i class="fab fa-facebook"></i> Facebook
                 </a>
-                <a href="" class="btn btn-link text-decoration-none me-2">
+
+                <a href="https://instagram.com/permadimedia" target="_blank"
+                    class="btn btn-link text-decoration-none me-1">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+
+                <a href="https://twitter.com/intent/tweet?text=Check%20out%20this%20awesome%20page:%20{{ url()->current() }}"
+                    target="_blank" class="btn btn-link text-decoration-none me-1">
                     <i class="fab fa-twitter"></i> twitter X
                 </a>
 
@@ -47,7 +58,8 @@
 
                                     <h2 class="card-title h4"><a wire:navigate
                                             class="link-dark link-offset-2 link-underline-opacity-0"
-                                            href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h2>
+                                            href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a>
+                                    </h2>
 
                                     <span class="small text-muted mb-1">
                                         <span class="text-primary-emphasis">{{ $article->user->name }} </span> <span
