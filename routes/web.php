@@ -12,13 +12,14 @@ use App\Livewire\Backend\ArticleCreateWire;
 use App\Livewire\Backend\ArticleEditWire;
 use App\Livewire\Backend\UserWire;
 use App\Livewire\Backend\UserProfileWire;
+use App\Livewire\Backend\BlogConfigWire;
 
 use App\Livewire\Frontend\BlogWire;
-
 use App\Http\Middleware\UserRole;
 use App\Livewire\Frontend\BlogAllArticles;
 use App\Livewire\Frontend\BlogArticleWire;
 use App\Livewire\Frontend\BlogAbout;
+
 
 // Route::get('/', function () {
 //     return view('blog');
@@ -77,6 +78,7 @@ Route::middleware('auth', 'roles:user,editor,administrator')->group(function () 
     Route::get('articles/create', ArticleCreateWire::class)->name('articles.create');
     Route::get('articles/edit/{article}', ArticleEditWire::class)->name('article.edit');
     Route::get('user/profile', UserProfileWire::class)->name('user.profile');
+    Route::get('blog-config', BlogConfigWire::class)->name('blog.config');
 });
 
 

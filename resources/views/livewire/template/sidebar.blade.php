@@ -26,6 +26,11 @@
                     <div class="sb-nav-link-icon"><i class="fas fa-circle-user"></i></div>
                     Users
                 </a>
+                <a class="nav-link @if (Route::is('blog.config')) {{ 'active' }} @endif"
+                    href="{{ route('blog.config') }}" wire:navigate>
+                    <div class="sb-nav-link-icon"><i class="fas fa-gear"></i></div>
+                    Blog Config
+                </a>
             @endif
 
 
