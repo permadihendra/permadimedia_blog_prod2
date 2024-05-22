@@ -18,6 +18,7 @@ class ArticleSeeder extends Seeder
 
         Article::create([
             'category_id' => 1,
+            'user_id' => 1,
             'title' => 'technology',
             'slug' => 'technology',
             'desc' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis voluptas earum corporis quod consequatur iusto officia velit, eos ipsam repudiandae a provident, expedita voluptatem odit ratione aspernatur facere delectus quibusdam.',

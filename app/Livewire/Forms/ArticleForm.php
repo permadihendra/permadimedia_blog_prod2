@@ -11,6 +11,7 @@ use Livewire\WithFileUploads;
 
 use App\Models\Category;
 use App\Models\Article;
+use Illuminate\Support\Facades\Auth;
 
 class ArticleForm extends Form
 {
@@ -98,6 +99,7 @@ class ArticleForm extends Form
         $validated['slug'] =  Str::slug($this->title);
         $validated['views'] = 0;
         $validated['status'] = 0;
+        $validated['user_id'] = Auth::user()->id;
 
 
         Article::create($validated);
@@ -136,6 +138,7 @@ class ArticleForm extends Form
 
 
         $validated['slug'] =  Str::slug($this->title);
+        $validated['user_id'] = Auth::user()->id;
 
         // dump($validated);
 

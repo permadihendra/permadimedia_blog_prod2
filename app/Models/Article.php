@@ -17,6 +17,11 @@ class Article extends Model
         return $this->belongsTo(Category::class);
     }
 
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+
     // Scope search to add search functionality in eloquent query
     public function scopeSearch($query, $value)
     {

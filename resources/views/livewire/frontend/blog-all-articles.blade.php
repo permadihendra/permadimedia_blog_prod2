@@ -14,9 +14,9 @@
         @if ($category_id)
             <span>category </span>
             <a href=""
-                class="badge bg-secondary">{{ \App\Models\Category::where('id', $category_id)->first()->name }}
+                class="badge bg-secondary unstyled-link">{{ \App\Models\Category::where('id', $category_id)->first()->name }}
             </a>
-            <a href="" class="badge bg-warning">
+            <a href="" class="badge bg-danger unstyled-link">
                 X
             </a>
         @endif
@@ -36,6 +36,7 @@
                                         href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h2>
 
                                 <span class="small text-muted mb-1">
+                                    {{ $article->user->name }} <span class="text-primary">~</span>
                                     {{ $article->updated_at->format('M d, Y') }}
                                 </span>
 

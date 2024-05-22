@@ -11,15 +11,17 @@
                             alt="{{ $article->title }}" width="300" height="150" /></a>
                     <div class="card-body">
                         <div class="small text-muted">
+                            {{ $article->user->name }} <span class="text-primary">~</span>
                             {{ $article->updated_at->format('M d, Y') }}
+
+                            <h2 class="card-title h4"><a wire:navigate
+                                    class="link-dark link-offset-2 link-underline-opacity-0"
+                                    href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h2>
+                            <p class="card-text">
+                                {{ Str::limit(strip_tags($article->desc), 150, '...') }}
+                            </p>
                             <span class="text-success">{{ $article->category->name }}</span>
                         </div>
-                        <h2 class="card-title h4"><a wire:navigate
-                                class="link-dark link-offset-2 link-underline-opacity-0"
-                                href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h2>
-                        <p class="card-text">
-                            {{ Str::limit(strip_tags($article->desc), 150, '...') }}
-                        </p>
                         <a wire:navigate class="unstyled-link" href="{{ url('article/' . $article->slug) }}">Read more
                             →</a>
                     </div>

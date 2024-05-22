@@ -15,14 +15,15 @@ class BlogNonfeaturePost extends Component
     public $keyword;
 
     #[On('search')]
-    public function getArticle($keyword){
-            $this->keyword = $keyword;
+    public function getArticle($keyword)
+    {
+        $this->keyword = $keyword;
     }
 
     public function render()
     {
         return view('livewire.frontend.blog-nonfeature-post')->with([
-            'popularArticle' => Article::search($this->keyword)->where('status',1)->orderBy('views', 'DESC')->paginate(6),
+            'popularArticle' => Article::with('user')->search($this->keyword)->where('status', 1)->orderBy('views', 'DESC')->paginate(6),
         ]);
     }
 }
