@@ -65,6 +65,7 @@
     </x-partial.modal-edit>
 
     <div class="card mb-4">
+        {{ $configs }}
         <div class="card-body">
             <table class="table">
                 <thead>
