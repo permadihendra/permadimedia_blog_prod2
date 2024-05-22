@@ -36,7 +36,8 @@
                                         href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h2>
 
                                 <span class="small text-muted mb-1">
-                                    {{ $article->user->name }} <span class="text-primary">~</span>
+                                    <span class="text-primary-emphasis">{{ $article->user->name }} </span> <span
+                                        class="text-primary">~</span>
                                     {{ $article->updated_at->format('M d, Y') }}
                                 </span>
 
@@ -45,7 +46,9 @@
                                 </p>
                                 <div class="col">
                                     <div class="mb-1">
-                                        <span class="small text-success"> {{ $article->category->name }} </span>
+                                        <span class="badge bg-secondary-subtle text-body-secondary">
+                                            {{ $article->category->name }}
+                                        </span>
                                     </div>
                                     <div>
                                         <a wire:navigate class="unstyled-link"

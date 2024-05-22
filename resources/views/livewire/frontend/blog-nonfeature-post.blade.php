@@ -11,19 +11,30 @@
                             alt="{{ $article->title }}" width="300" height="150" /></a>
                     <div class="card-body">
                         <div class="small text-muted">
-                            {{ $article->user->name }} <span class="text-primary">~</span>
+                            <span class="text-primary-emphasis">{{ $article->user->name }}</span> <span
+                                class="text-primary">~</span>
                             {{ $article->updated_at->format('M d, Y') }}
 
                             <h2 class="card-title h4"><a wire:navigate
                                     class="link-dark link-offset-2 link-underline-opacity-0"
                                     href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h2>
-                            <p class="card-text">
+                            <p class="card-text mb-1">
                                 {{ Str::limit(strip_tags($article->desc), 150, '...') }}
                             </p>
-                            <span class="text-success">{{ $article->category->name }}</span>
                         </div>
-                        <a wire:navigate class="unstyled-link" href="{{ url('article/' . $article->slug) }}">Read more
-                            →</a>
+                        <div class="col">
+                            <div class="mb-1">
+                                <span class="badge bg-secondary-subtle text-body-secondary">
+                                    {{ $article->category->name }}
+                                </span>
+                            </div>
+                            <div>
+                                <a wire:navigate class="unstyled-link"
+                                    href="{{ url('article/' . $article->slug) }}">Read
+                                    more
+                                    →</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
