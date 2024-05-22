@@ -85,14 +85,3 @@
         </div>
     </nav>
 </div>
-
-{{-- @push('css') --}}
-@assets
-@endassets
-{{-- @endpush --}}
-
-{{-- @push('scripts') --}}
-@script
-@endscript
-
-{{-- @endpush --}}

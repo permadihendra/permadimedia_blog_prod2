@@ -18,8 +18,21 @@
                 {!! $article->desc !!}
             </p>
 
+
+            <div class="d-flex justify-content-end">
+                <a href="https://www.facebook.com" class="btn btn-link text-decoration-none me-2">
+                    <i class="fab fa-facebook"></i> Facebook
+                </a>
+                <a href="" class="btn btn-link text-decoration-none me-2">
+                    <i class="fab fa-twitter"></i> twitter X
+                </a>
+
+
+            </div>
+
         </div>
     </div>
+
     <div class="card mb-4">
         <div class="card-header">Related Articles</div>
         <div class="card-body">
@@ -78,6 +91,7 @@
 </div>
 
 @push('css')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
 @endpush
 

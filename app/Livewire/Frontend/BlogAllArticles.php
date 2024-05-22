@@ -34,7 +34,7 @@ class BlogAllArticles extends Component
     public function render()
     {
         return view('livewire.frontend.blog-all-articles')->with([
-            'articles' => Article::search($this->keyword)
+            'articles' => Article::with(['category', 'user'])->search($this->keyword)
                 ->where('status', 1)->orderBy('created_at', 'DESC')
                 ->when($this->category_id !== '', function ($query) {
                     $query->where('category_id', $this->category_id);

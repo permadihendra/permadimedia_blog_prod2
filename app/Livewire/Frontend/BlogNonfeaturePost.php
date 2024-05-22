@@ -23,7 +23,7 @@ class BlogNonfeaturePost extends Component
     public function render()
     {
         return view('livewire.frontend.blog-nonfeature-post')->with([
-            'popularArticle' => Article::with('user')->search($this->keyword)->where('status', 1)->orderBy('views', 'DESC')->paginate(6),
+            'popularArticle' => Article::with(['category', 'user'])->search($this->keyword)->where('status', 1)->orderBy('views', 'DESC')->paginate(6),
         ]);
     }
 }
