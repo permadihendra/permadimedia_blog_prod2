@@ -59,6 +59,7 @@
     <!-- Footer-->
     <x-layouts.footer />
     @stack('scripts')
+
 </body>
 
 </html>

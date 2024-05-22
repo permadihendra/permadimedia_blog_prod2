@@ -3,9 +3,9 @@
     <div class="row" id="paginated-article">
 
         @foreach ($popularArticle as $article)
-            <div class="col-lg-6">
+            <div :key="{{ $article->id }}" class="col-lg-6">
                 <!-- Blog post-->
-                <div wire:ignore.self class="card card-article mb-4" data-aos="fade-up">
+                <div wire:ignore.self class="card card-article mb-4">
                     <a wire:navigate href="{{ url('article/' . $article->slug) }}"><img
                             class="card-img-top article-list-img" src="{{ asset('storage/' . $article->img) }}"
                             alt="{{ $article->title }}" width="300" height="150" /></a>

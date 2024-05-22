@@ -8,7 +8,7 @@
                 Dashboard
             </a>
 
-            <a class="nav-link @if (request()->segment(1) == 'articles') {{ 'active' }} @endif"
+            <a wire:click="$refresh" class="nav-link @if (request()->segment(1) == 'articles') {{ 'active' }} @endif"
                 href="{{ route('articles') }}" wire:navigate>
                 <div class="sb-nav-link-icon"><i class="fas fa-newspaper"></i></div>
                 Articles
