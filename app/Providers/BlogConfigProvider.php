@@ -22,13 +22,12 @@ class BlogConfigProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
-        View::composer('components.layouts.template', function ($view) {
-            $configNames = ['logo', 'app_name'];
+        $configData = BlogConfig::get();
+        $configs = [];
+        foreach ($configData as $config) {
+            $configs[$config->name] = $config->value;
+        }
 
-            $configs = BlogConfig::whereIn('name', $configNames)->pluck('name', 'value');
-
-            $view->with(['configs' => $configs],);
-        });
+        View::share('configs', $configs);
     }
 }

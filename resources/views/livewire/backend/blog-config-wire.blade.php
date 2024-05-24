@@ -65,7 +65,7 @@
     </x-partial.modal-edit>
 
     <div class="card mb-4">
-        {{ $configs }}
+
         <div class="card-body">
             <table class="table">
                 <thead>
@@ -80,7 +80,7 @@
                 <tbody>
                     @foreach ($configs as $config)
                         <tr :key="{{ $config->id }}">
-                            <td>{{ $loop->iteration }}</td>
+                            <td>{{ $config->id }}</td>
                             <td>{{ $config->name }}</td>
                             <td>{{ $config->value }}</td>
                             <td>

@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
     <meta name="author" content="permadimedia" />
+    <meta name="robots" content="index,follow">
     @stack('meta-seo')
     <title>@yield('title', 'permadimedia - Blog')</title>
     <!-- Favicon-->
@@ -33,6 +33,26 @@
     </header>
     <!-- Page content-->
     <div class="container">
+        <div class="row mb-3">
+            <div class="col-sm-4 mb-1">
+                <a href="{{ $configs['ads_header'] }}" target="_blank">
+                    <img src="{{ $configs['ads_header'] }}" class="img-fluid rounded-start"
+                        alt="{{ $configs['ads_header'] }}" />
+                </a>
+            </div>
+            <div class="col-sm-4 mb-1">
+                <a href="{{ $configs['ads_header2'] }}" target="_blank">
+                    <img src="{{ $configs['ads_header2'] }}" class="img-fluid rounded-start"
+                        alt="{{ $configs['ads_header2'] }}" />
+                </a>
+            </div>
+            <div class="col-sm-4 mb-1">
+                <a href="{{ $configs['ads_header3'] }}" target="_blank">
+                    <img src="{{ $configs['ads_header3'] }}" class="img-fluid rounded-start"
+                        alt="{{ $configs['ads_header3'] }}" />
+                </a>
+            </div>
+        </div>
         <div class="row">
             <!-- Blog entries-->
             <div class="col-lg-8">

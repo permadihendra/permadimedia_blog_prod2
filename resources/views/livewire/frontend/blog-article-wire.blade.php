@@ -1,4 +1,15 @@
 @section('title', 'permadimedia -' . $article->title)
+
+@push('meta-seo')
+    <meta name="description" content="{{ Str::limit(strip_tags($article->desc), 150, '...') }}">
+    <meta name="keyword" content="{{ $configs['keywords'] }}">
+    <meta property="og:title" content="{{ $article->title }}">
+    <meta property="og:site_name" content="permadimedia - blog">
+    <meta property="og:url" content="{{ url()->current() }}">
+    <meta property="og:description" content="{{ Str::limit(strip_tags($article->desc), 150, '...') }}">
+    <meta property="og:image" content="{{ asset('../../storage/' . $article->img) }}">
+@endpush
+
 <!-- blog article-->
 <div>
     <div class="card mb-4">
@@ -6,7 +17,8 @@
                 src="{{ asset('../../storage/' . $article->img) }}" alt="{{ $article->title }}" /></a>
         <div class="card-body">
             <span class="small text-muted mb-1">
-                <span class="text-primary-emphasis">{{ $article->user->name }} </span> <span class="text-primary">~</span>
+                <span class="text-primary-emphasis">{{ $article->user->name }} </span> <span
+                    class="text-primary">~</span>
                 {{ $article->updated_at->format('M d, Y') }}
                 <span class="badge bg-secondary-subtle text-primary-emphasis">
                     {{ $article->category->name }}

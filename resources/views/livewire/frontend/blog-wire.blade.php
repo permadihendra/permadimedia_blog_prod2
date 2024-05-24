@@ -1,8 +1,8 @@
 <div>
     <div class="text-center my-5">
-        <h1 class="fw-bolder">This is the Blog</h1>
+        <h1 class="fw-bolder">{{ $configs['header_text'] }}</h1>
         <p class="lead mb-0">
-            A Bootstrap 5 starter layout for your next blog homepage
+            {{ $configs['header_caption'] }}
         </p>
     </div>
 </div>

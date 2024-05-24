@@ -36,4 +36,15 @@
         </div>
 
     </div>
+
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="">
+                <a href="{{ $configs['ads_widget'] }}" target="_blank">
+                    <img src="{{ $configs['ads_widget'] }}" class="img-fluid rounded-start"
+                        alt="{{ $configs['ads_widget'] }}" />
+                </a>
+            </div>
+        </div>
+    </div>
 </div>

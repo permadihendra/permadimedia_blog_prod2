@@ -16,6 +16,10 @@ class BlogConfigSeeder extends Seeder
     {
         BlogConfig::insert([
             [
+                'name' => 'keywords',
+                'value' => 'teknologi,foto,permadimedia,terbaru',
+            ],
+            [
                 'name' => 'logo',
                 'value' => 'logo.png',
             ],
@@ -41,6 +45,14 @@ class BlogConfigSeeder extends Seeder
             ],
             [
                 'name' => 'ads_header',
+                'value' => 'link',
+            ],
+            [
+                'name' => 'ads_header2',
+                'value' => 'link',
+            ],
+            [
+                'name' => 'ads_header3',
                 'value' => 'link',
             ],
             [
