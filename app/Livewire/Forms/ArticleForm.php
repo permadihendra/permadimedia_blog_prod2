@@ -3,6 +3,8 @@
 namespace App\Livewire\Forms;
 
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 
 use Livewire\Attributes\Validate;
 use Livewire\Form;
@@ -15,7 +17,10 @@ use Illuminate\Support\Facades\Auth;
 
 class ArticleForm extends Form
 {
+
     use WithFileUploads;
+
+    // private ImageService $imageService;
 
     // Form Variables
 
@@ -43,6 +48,9 @@ class ArticleForm extends Form
 
 
     public $articles;
+
+
+
 
     public function rules()
     {
@@ -81,19 +89,64 @@ class ArticleForm extends Form
         // else return abort(404);
     }
 
+    // image Intervention
+    public function uploadImage(array $data, string $oldImage = NULL)
+    {
+        $file = $data['img'];
+        $imageName = uniqid() . '.' . 'webp';
+        $originalPath = storage_path() . '/app/public/backend/images/';
+        $thumbnailPath = storage_path() . '/app/public/backend/images/thumbnails/';
+
+        $originalImage = storage_path() . '/app/public/backend/images/' . $imageName;
+        $thumbnailImage = storage_path() . '/app/public/backend/images/thumbnails/' . $imageName;
+
+        if (!file_exists($originalPath)) {
+            mkdir($originalPath, 0775, true);
+        }
+
+        if (!file_exists($thumbnailPath)) {
+            mkdir($thumbnailPath, 0775, true);
+        }
+
+        // create new manager instance with desired driver
+        $intervention = new ImageManager(new Driver());
+
+        // Generate main image
+        $intervention->read($file)->scale(width: 900)->toWebp(100)->save($originalImage);
+        $intervention->read($file)->scale(width: 300)->toWebp(100)->save($thumbnailImage);
+        //Delete Old Image
+        if ($oldImage) {
+            Storage::delete([
+                'public/backend/images/' . $oldImage,
+                'public/backend/images/thumbnails' . $oldImage,
+            ]);
+        }
+
+        //$data['img'] = $imageName;
+
+        return $imageName;
+    }
+
     public function store()
     {
 
-
         $validated = $this->validate();
 
-        $file = $this->img; // img
+        // $file = $this->img; // img
+
+        // if ($this->img) {
+        //     $filename = uniqid() . '.' . $this->img->extension(); //12763dshd.jpg
+        //     $file_path = $this->img->storeAs('backend/images', $filename, 'public'); // store file in "backend/images" folder public and get the full path
+        //     $validated['img'] = $file_path;
+        // }
+
 
         if ($this->img) {
-            $filename = uniqid() . '.' . $this->img->extension(); //12763dshd.jpg
-            $file_path = $this->img->storeAs('backend/images', $filename, 'public'); // store file in "backend/images" folder public and get the full path
-            $validated['img'] = $file_path;
+            $uploadImage = $this->uploadImage($validated);
+            $validated['img'] = $uploadImage;
         }
+        // Using imageService -> image Intervention
+
         // Append Default values
 
         $validated['slug'] =  Str::slug($this->title);
@@ -118,17 +171,30 @@ class ArticleForm extends Form
 
         // dump($validated);
 
-        if ($this->img) //check if $this->image is not String, then 
-        {
-            $filename = uniqid() . '.' . $this->img->extension(); //12763dshd.jpg
-            $file_path = $this->img->storeAs('backend/images', $filename, 'public'); // store file in "backend/images" folder public and get the full path
+        // if ($this->img) //check if $this->image is not String, then 
+        // {
+        //     $filename = uniqid() . '.' . $this->img->extension(); //12763dshd.jpg
+        //     $file_path = $this->img->storeAs('backend/images', $filename, 'public'); // store file in "backend/images" folder public and get the full path
 
-            // Append Default values
-            $validated['img'] = $file_path; // if there is new upload file
+        //     // Append Default values
+        //     $validated['img'] = $file_path; // if there is new upload file
 
-            // Add function if the file exist
-            if (Storage::exists('public/' . $this->img_saved)) {
-                Storage::delete('public/' . $this->img_saved); // delete saved image before
+        //     // Add function if the file exist
+        //     if (Storage::exists('public/' . $this->img_saved)) {
+        //         Storage::delete('public/' . $this->img_saved); // delete saved image before
+        //     }
+        // } else {
+        //     $validated['img'] = $this->img_saved; // if there is not new upload file
+        // }
+
+        if ($this->img) {
+            $uploadImage = $this->uploadImage($validated);
+            $validated['img'] = $uploadImage;
+
+            // Add function delete saved image, if existing
+            if (Storage::exists('public/backend/images/' . $this->img_saved)) {
+                Storage::delete('public/backend/images/' . $this->img_saved); // delete saved image before
+                Storage::delete('public/backend/images/thumbnails/' . $this->img_saved); // delete saved image before
             }
         } else {
             $validated['img'] = $this->img_saved; // if there is not new upload file
@@ -162,8 +228,9 @@ class ArticleForm extends Form
     {
 
         // Add function if the file exist then delete
-        if (Storage::exists('public/' . $article->img)) {
-            Storage::delete('public/' . $article->img); // delete saved image before
+        if (Storage::exists('public/backend/images/' . $article->img)) {
+            Storage::delete('public/backend/images/' . $article->img); // delete saved image before
+            Storage::delete('public/backend/images/thumbnails/' . $article->img); // delete saved image before
         }
         $article->delete();
     }

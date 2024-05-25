@@ -69,8 +69,8 @@
                 <div class="card mb-3 mt-3" style="max-width: 440px">
                     <div class="row gap-0">
                         <div class="col-md-4">
-                            <img src="{{ asset('storage/' . $form->img_saved) }}" class="mt-2 p-1" width="100px"
-                                height="100px" alt="" srcset="" />
+                            <img src="{{ asset('storage/backend/images/thumbnails/' . $form->img_saved) }}"
+                                class="mt-2 p-1" width="100px" height="100px" alt="" srcset="" />
                         </div>
                         <div class="col-md-8">
                             <div class="card-body">

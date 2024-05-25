@@ -33,6 +33,10 @@ use App\Livewire\Frontend\BlogAbout;
 
 Auth::routes();
 
+Route::get('/phpinfo', function () {
+    return view(('frontend.phpinfo'));
+});
+
 Route::get('/registered', function () {
     return view('frontend.registered');
 });

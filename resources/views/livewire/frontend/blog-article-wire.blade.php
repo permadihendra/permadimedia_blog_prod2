@@ -7,14 +7,14 @@
     <meta property="og:site_name" content="permadimedia - blog">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:description" content="{{ Str::limit(strip_tags($article->desc), 150, '...') }}">
-    <meta property="og:image" content="{{ asset('../../storage/' . $article->img) }}">
+    <meta property="og:image" content="{{ asset('storage/backend/images/thumbnails/' . $article->img) }}">
 @endpush
 
 <!-- blog article-->
 <div>
     <div class="card mb-4">
         <a href="{{ url('article/' . $article->slug) }}"><img class="card-img-top article-display-img"
-                src="{{ asset('../../storage/' . $article->img) }}" alt="{{ $article->title }}" /></a>
+                src="{{ asset('storage/backend/images/' . $article->img) }}" alt="{{ $article->title }}" /></a>
         <div class="card-body">
             <span class="small text-muted mb-1">
                 <span class="text-primary-emphasis">{{ $article->user->name }} </span> <span
@@ -99,8 +99,8 @@
                                 <div class="col-lg-3">
                                     <a wire:navigate href="{{ url('article/' . $article->slug) }}"><img
                                             class="card-img-top article-list-img"
-                                            src="{{ asset('storage/' . $article->img) }}" alt="{{ $article->title }}"
-                                            width="300" height="150" /></a>
+                                            src="{{ asset('storage/backend/images/thumbnails/' . $article->img) }}"
+                                            alt="{{ $article->title }}" width="300" height="150" /></a>
                                 </div>
                             </div>
                         </div>
