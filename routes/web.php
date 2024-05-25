@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\backend\DashboardController;
 use App\Http\Controllers\backend\CategoryController;
+use App\Http\Controllers\SiteMapController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -62,6 +63,9 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 //     Route::get('articles/edit/{article}', ArticleEditWire::class)->name('article.edit');
 //     Route::get('users', UserWire::class)->name('users');
 // });
+
+//Site Map
+Route::get('/sitemap.xml', [SiteMapController::class, 'generateSitemap'])->name('sitemap');
 
 // Blog Route
 Route::middleware('web')->group(function () {
