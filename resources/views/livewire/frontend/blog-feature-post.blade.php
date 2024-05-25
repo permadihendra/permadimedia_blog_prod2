@@ -1,7 +1,7 @@
 <!-- Featured blog post-->
 <div class="card card-article mb-4">
     <a wire:navigate href="{{ url('article/' . $latestArticle->slug) }}"><img class="card-img-top featured-img"
-            src="{{ asset('../../storage/' . $latestArticle->img) }}" alt="..." /></a>
+            src="{{ asset('storage/backend/images/thumbnails/' . $latestArticle->img) }}" alt="..." /></a>
     <div class="card-body">
         <div class="small text-muted">
             {{ $latestArticle->user->name }} <span class="text-primary">~</span>

@@ -7,7 +7,8 @@
                 <!-- Blog post-->
                 <div wire:ignore.self class="card card-article mb-4">
                     <a wire:navigate href="{{ url('article/' . $article->slug) }}"><img
-                            class="card-img-top article-list-img" src="{{ asset('storage/' . $article->img) }}"
+                            class="card-img-top article-list-img"
+                            src="{{ asset('storage/backend/images/thumbnails/' . $article->img) }}"
                             alt="{{ $article->title }}" width="300" height="150" /></a>
                     <div class="card-body">
                         <div class="small text-muted">
