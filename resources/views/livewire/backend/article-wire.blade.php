@@ -37,21 +37,3 @@
 
 
 </div>
-
-
-
-@push('scripts')
-    {{-- <script>
-        document.addEventListener('livewire:init', () => {
-            Livewire.on('showToast', (data) => {
-                //
-                console.log(data);
-                const toastLiveExample = document.getElementById('liveToast')
-                const toastBootstrap = bootstrap.Toast.getOrCreateInstance(toastLiveExample)
-
-                document.getElementById('toastMessage').textContent = data.message
-                toastBootstrap.show()
-            });
-        });
-    </script> --}}
-@endpush

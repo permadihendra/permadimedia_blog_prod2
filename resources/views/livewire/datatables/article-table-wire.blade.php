@@ -4,7 +4,7 @@
             <div class="col-sm-4">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
-                    <input wire:model.live.debounce.300ms="search" type="text" class="form-control"
+                    <input wire:model.live.debounce.300ms="search" id="search" type="text" class="form-control"
                         placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
                 </div>
             </div>
@@ -15,7 +15,7 @@
                         <label for="status" class="col-form-label">Category : </label>
                     </div>
                     <div class="col-auto">
-                        <select wire:model.change="categoryFilter" id="status" class="form-select"
+                        <select wire:model.change="categoryFilter" id="status_filter" class="form-select"
                             aria-label="select">
                             <option value="">All status</option>
                             @foreach ($categories as $category)
