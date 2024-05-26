@@ -25,6 +25,6 @@ class Article extends Model
     // Scope search to add search functionality in eloquent query
     public function scopeSearch($query, $value)
     {
-        $query->where('title', 'like', "%{$value}%")->orWhere('desc', 'like', "%{$value}%")->orWhere('category', 'like', "%{$value}%");
+        $query->where('title', 'like', "%{$value}%")->orWhere('desc', 'like', "%{$value}%");
     }
 }
