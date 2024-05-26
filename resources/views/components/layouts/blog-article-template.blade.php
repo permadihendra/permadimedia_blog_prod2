@@ -14,6 +14,7 @@
     {{-- Inluce Vite Asset Bundling --}}
     {{-- Default Bootsstrap CSS and JS --}}
     @stack('css')
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     @vite(['resources/scss/bootstrap.scss', 'resources/js/bootstrap.js'])
 
 </head>
@@ -52,6 +53,10 @@
     <x-layouts.footer />
 
     @stack('scripts')
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
 </body>
 
 </html>
