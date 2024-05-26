@@ -23,6 +23,9 @@
                 <span class="badge bg-secondary-subtle text-primary-emphasis">
                     {{ $article->category->name }}
                 </span>
+                <span class="">
+                    <i class="fa fa-eye"></i> {{ $article->views }}
+                </span>
             </span>
             <h2 class="card-title"><a class="link-dark link-offset-2 link-underline-opacity-0"
                     href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h2>

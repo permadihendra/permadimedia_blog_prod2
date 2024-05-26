@@ -75,7 +75,7 @@ Route::get('/sitemap.xml', [SiteMapController::class, 'generateSitemap'])->name(
 // Blog Route
 Route::middleware('web')->group(function () {
     Route::get('/', BlogWire::class)->name('blog-home');
-    Route::get('/article/{slug}', BlogArticleWire::class)->name('blog-article');
+    Route::get('/article/{slug}', BlogArticleWire::class)->name('blog-article')->middleware('increment_views');
     Route::get('/all-articles', BlogAllArticles::class)->name('blog-all-articles');
     Route::get('/about', BlogAbout::class)->name('blog-about');
 });

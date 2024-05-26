@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->longText('desc');
             $table->string('img')->nullable();
-            $table->integer('views');
+            $table->unsignedBigInteger('views')->default(0);
             $table->string('status');
             $table->date('publish_date');
             $table->timestamps();

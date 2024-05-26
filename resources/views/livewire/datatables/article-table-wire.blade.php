@@ -50,6 +50,7 @@
                     <th scope="col" wire:click="setSortBy('title')">Title <i class="fas fa-sort"></i></th>
                     <th scope="col" wire:click="setSortBy('category_id')">Category <i class="fas fa-sort"></i></th>
                     <th scope="col" wire:click="setSortBy('status')">Status <i class="fas fa-sort"></i></th>
+                    <th scope="col" wire:click="setSortBy('views')">Views <i class="fas fa-sort"></i></th>
                     <th scope="col">Image<i class="fas fa-sort"></i></th>
                     <th scope="col" wire:click="setSortBy('publish_date')">Published Data <i class="fas fa-sort"></i>
                     </th>
@@ -70,6 +71,7 @@
                                 <small class="badge bg-success">Published</small>
                             @endif
                         </td>
+                        <td>{{ $article->views }}</td>
                         <td>{{ $article->img }}</td>
                         <td>{{ $article->publish_date }}</td>
                         <td>{{ $article->updated_at }}</td>
