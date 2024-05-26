@@ -105,10 +105,12 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
         </script>
+        <script src="//cdn.bootcss.com/markdown-it/8.3.1/markdown-it.min.js"></script>
 
 
         <link href="/css/summernote-lite.css" rel="stylesheet">
         <script src="/js/summernote-lite.js"></script>
+        <script src="/js/summernote-ext-highlight.min.js"></script>
     @endassets
 
     @script
@@ -149,13 +151,14 @@
                 // Please note that you can add this button to any other button group you'd like
                 $('#summernote-editor').summernote({
                     height: 400,
+
                     toolbar: [
                         ['style', ['style']],
                         ['font', ['bold', 'underline', 'clear']],
                         ['color', ['color']],
                         ['para', ['ul', 'ol', 'paragraph']],
                         ['table', ['table']],
-                        ['insert', ['link', 'popovers', ['lfm']]],
+                        ['insert', ['link', 'popovers', ['lfm'], 'popovers', ['highlight']]],
                         ['view', ['fullscreen', 'codeview', 'help']],
 
                     ],

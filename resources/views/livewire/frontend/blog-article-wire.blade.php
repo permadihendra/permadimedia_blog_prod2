@@ -112,20 +112,21 @@
             @endforelse
         </div>
     </div>
+
 </div>
 
 @push('css')
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
 @endpush
-
 
 @push('scripts')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js" data-navigate-track></script>
-    <script data-navigate-track>
-        document.addEventListener('livewire:navigated', () => {
-            // ...
-            hljs.highlightAll();
-        })
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
 @endpush
+
+@script
+    <script>
+        hljs.highlightAll();
+    </script>
+@endscript
