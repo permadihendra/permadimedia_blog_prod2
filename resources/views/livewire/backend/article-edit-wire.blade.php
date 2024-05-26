@@ -45,7 +45,7 @@
             <label for="description" class="form-label" id="description-label">Description</label>
             <div wire:ignore>
                 <textarea name="content" class="form-control @error('form.desc') is-invalid @enderror" id="summernote-editor"
-                    rows="5">{!! $form->desc !!}</textarea>
+                    rows="5">{{ $form->desc }}</textarea>
                 <input type="hidden" wire:model.blur="form.desc">
             </div>
 
