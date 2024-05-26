@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
+use Illuminate\Support\Facades\Schema;
+
 use App\Models\BlogConfig;
 
 class BlogConfigProvider extends ServiceProvider
@@ -22,12 +24,15 @@ class BlogConfigProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $configData = BlogConfig::get();
-        $configs = [];
-        foreach ($configData as $config) {
-            $configs[$config->name] = $config->value;
-        }
+        if (Schema::hasTable('blog_configs')) {
 
-        View::share('configs', $configs);
+            $configData = BlogConfig::get();
+            $configs = [];
+            foreach ($configData as $config) {
+                $configs[$config->name] = $config->value;
+            }
+
+            View::share('configs', $configs);
+        }
     }
 }
