@@ -119,9 +119,13 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/styles/default.min.css">
 @endpush
 
+
 @push('scripts')
-    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js"></script>
-    <script>
-        hljs.highlightAll();
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.3.1/highlight.min.js" data-navigate-track></script>
+    <script data-navigate-track>
+        document.addEventListener('livewire:navigated', () => {
+            // ...
+            hljs.highlightAll();
+        })
     </script>
 @endpush

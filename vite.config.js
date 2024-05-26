@@ -10,6 +10,11 @@ export default defineConfig({
                 "resources/js/app.js",
                 "resources/js/bootstrap.js",
             ],
+
+            build: {
+                // Disables the preload.
+                modulePreload: false,
+            },
             refresh: true,
         }),
     ],

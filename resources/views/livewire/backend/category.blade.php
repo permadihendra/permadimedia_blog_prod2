@@ -30,7 +30,7 @@
                 <label for="name" class="col-sm-4 col-form-label">Category Name</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control @error('name') is-invalid @enderror  " id="name"
-                        name="name" wire:model="name">
+                        name="name" wire:model="name" autocomplete="name">
 
                     @error('name')
                         <div class="invalid-feedback">
@@ -65,7 +65,7 @@
             <label for="name" class="col-sm-4 col-form-label">Category Name</label>
             <div class="col-sm-8">
                 <input type="text" class="form-control @error('name') is-invalid @enderror  " id="name"
-                    name="name" wire:model="name">
+                    name="name" wire:model="name" autocomplete="name">
 
                 @error('name')
                     <div class="invalid-feedback">

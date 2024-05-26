@@ -28,7 +28,7 @@
                 <label for="name" class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control @error('form.name') is-invalid @enderror  " id="name"
-                        name="name" wire:model="form.name">
+                        name="name" wire:model="form.name" autocomplete="name">
                     @error('form.name')
                         <div class="invalid-feedback">
                             <span class="error">{{ $message }}</span>
@@ -40,7 +40,7 @@
                 <label for="email" class="col-sm-4 col-form-label">Email Address</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control @error('form.email') is-invalid @enderror  "
-                        id="email" name="email" wire:model="form.email">
+                        id="email" name="email" wire:model="form.email" autocomplete="email">
                     @error('form.email')
                         <div class="invalid-feedback">
                             <span class="error">{{ $message }}</span>
@@ -102,7 +102,7 @@
                 <label for="name" class="col-sm-4 col-form-label">Name</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control @error('form.name') is-invalid @enderror  " id="name"
-                        name="name" wire:model="form.name">
+                        name="name" wire:model="form.name" autocomplete="name">
                     @error('form.name')
                         <div class="invalid-feedback">
                             <span class="error">{{ $message }}</span>
@@ -114,7 +114,7 @@
                 <label for="email" class="col-sm-4 col-form-label">Email Address</label>
                 <div class="col-sm-8">
                     <input type="text" class="form-control @error('form.email') is-invalid @enderror  "
-                        id="email" name="email" wire:model="form.email" disabled>
+                        id="email" name="email" wire:model="form.email" disabled autocomplete="email">
                     @error('form.email')
                         <div class="invalid-feedback">
                             <span class="error">{{ $message }}</span>
@@ -127,7 +127,7 @@
                 <label for="role" class="col-sm-4 col-form-label">User Role</label>
                 <div class="col-sm-8">
 
-                    <select wire:model="form.role_id" class="form-select">
+                    <select wire:model="form.role_id" id="role" class="form-select">
                         {{-- <option disabled>{{ $form->role }}</option> --}}
 
                         @foreach ($roles as $role)
@@ -147,7 +147,7 @@
             <div class="mb-3 row">
                 <label for="status" class="col-sm-4 col-form-label">User Status</label>
                 <div class="col-sm-8">
-                    <select wire:model="form.is_active" class="form-select">
+                    <select wire:model="form.is_active" id="status" class="form-select">
                         <option value="0">Inactive</option>
                         <option value="1">Active</option>
                     </select>

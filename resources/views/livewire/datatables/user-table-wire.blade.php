@@ -4,7 +4,7 @@
             <div class="col-sm-4">
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="basic-addon1"><i class="fa fa-search"></i></span>
-                    <input wire:model.live.debounce.300ms="search" type="text" class="form-control"
+                    <input wire:model.live.debounce.300ms="search" id="search_filter" type="text" class="form-control"
                         placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
                 </div>
             </div>
@@ -85,10 +85,10 @@
             <div class="col-sm-4">
                 <div class="row">
                     <div class="col-5">
-                        <label for="usertype" class="col-form-label">Per page : </label>
+                        <label for="perPage" class="col-form-label">Per page : </label>
                     </div>
                     <div class="col-5">
-                        <select wire:model.change="perPage" id="usertype" class="form-select"
+                        <select wire:model.change="perPage" id="perPage" class="form-select"
                             aria-label="Default select example">
                             <option value="10">10</option>
                             <option value="20">20</option>

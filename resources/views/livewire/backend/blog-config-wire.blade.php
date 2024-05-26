@@ -31,7 +31,7 @@
             <label for="name" class="col-sm-4 col-form-label">Config Name</label>
             <div class="col-sm-8">
                 <input type="text" class="form-control @error('name') is-invalid @enderror  " id="name"
-                    name="name" wire:model="name" readonly disabled>
+                    name="name" wire:model="name" readonly disabled autocomplete="name">
 
                 @error('name')
                     <div class="invalid-feedback">
@@ -43,7 +43,7 @@
         </div>
 
         <div class="mb-3 row">
-            <label for="name" class="col-sm-4 col-form-label">Config Value</label>
+            <label for="value" class="col-sm-4 col-form-label">Config Value</label>
             <div class="col-sm-8">
                 <textarea cols="30" rows="5" class="form-control @error('value') is-invalid @enderror  " id="value"
                     name="value" wire:model="value"></textarea>
@@ -66,7 +66,7 @@
 
     <div class="card mb-4">
 
-        <div class="card-body">
+        <div class="card-body overflow-x-scroll">
             <table class="table">
                 <thead>
                     <tr>
@@ -92,10 +92,8 @@
 
                         </tr>
                     @endforeach
+                </tbody>
+            </table>
         </div>
-
-
-        </tbody>
-        </table>
     </div>
 </div>
