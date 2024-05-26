@@ -11,6 +11,7 @@ use App\Livewire\Backend\CategoryPage;
 use App\Livewire\Backend\ArticleWire;
 use App\Livewire\Backend\ArticleCreateWire;
 use App\Livewire\Backend\ArticleEditWire;
+use App\Livewire\Backend\ArticlePreviewWire;
 use App\Livewire\Backend\UserWire;
 use App\Livewire\Backend\UserProfileWire;
 use App\Livewire\Backend\BlogConfigWire;
@@ -85,6 +86,7 @@ Route::middleware('auth', 'roles:user,editor,administrator')->group(function () 
     Route::get('articles', ArticleWire::class)->name('articles');
     Route::get('articles/create', ArticleCreateWire::class)->name('articles.create');
     Route::get('articles/edit/{article}', ArticleEditWire::class)->name('article.edit');
+    Route::get('articles/preview/{article}', ArticlePreviewWire::class)->name('article.preview');
     Route::get('user/profile', UserProfileWire::class)->name('user.profile');
     Route::get('blog-config', BlogConfigWire::class)->name('blog.config');
 });
