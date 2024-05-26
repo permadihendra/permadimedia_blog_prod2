@@ -158,7 +158,7 @@
                         ['color', ['color']],
                         ['para', ['ul', 'ol', 'paragraph']],
                         ['table', ['table']],
-                        ['insert', ['link', 'popovers', ['lfm'], 'popovers', ['highlight']]],
+                        ['insert', ['link', 'popovers', ['lfm'], 'highlight']],
                         ['view', ['fullscreen', 'codeview', 'help']],
 
                     ],

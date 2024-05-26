@@ -139,8 +139,7 @@
                         ['color', ['color']],
                         ['para', ['ul', 'ol', 'paragraph']],
                         ['table', ['table']],
-                        // ['insert', ['link', 'picture', 'video']],
-                        ['insert', ['popovers', ['lfm']]],
+                        ['insert', ['link', 'popovers', ['lfm'], 'highlight']],
                         ['view', ['fullscreen', 'codeview', 'help']],
 
                     ],
