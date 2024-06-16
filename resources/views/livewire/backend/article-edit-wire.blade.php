@@ -126,6 +126,7 @@
                     'content'),
                 extraPlugins: 'codesnippet',
                 codeSnippet_theme: 'atom-one-dark.min',
+                clipboard_handleImages: false,
                 on: {
                     // This event is fired every time the editor data is changed
                     change: function(evt) {

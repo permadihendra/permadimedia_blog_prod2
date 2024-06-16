@@ -26,11 +26,11 @@
             </span>
             <h1 class="card-title"><a class="link-dark link-offset-2 link-underline-opacity-0"
                     href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h1>
-            
+
             <span class="badge bg-secondary-subtle text-primary-emphasis">
-                    {{ $article->category->name }}
+                {{ $article->category->name }}
             </span>
-            
+
             <p class="card-text">
                 {!! $article->desc !!}
             </p>
@@ -121,7 +121,8 @@
 </div>
 
 @push('css')
-    <link rel="stylesheet" href="{{ asset('js/ckeditor4/plugins/codesnippet/lib/highlight/styles/atom-one-dark.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('js/ckeditor4/plugins/codesnippet/lib/highlight/styles/atom-one-dark.min.css') }}">
 @endpush
 
 @push('scripts')
@@ -132,12 +133,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet"
         href="{{ asset('js/ckeditor4/plugins/codesnippet/lib/highlight/styles/atom-one-dark.min.css') }}">
+    <script src="{{ asset('js/ckeditor4/plugins/codesnippet/lib/highlight/highlight.pack.js') }}"></script>
 @endassets
 
 @script
-    <script src="{{ asset('js/ckeditor4/plugins/codesnippet/lib/highlight/highlight.pack.js') }}"></script>
-  
     <script>
-         hljs.highlightAll();
+        hljs.initHighlightingOnLoad();
     </script>
 @endscript
