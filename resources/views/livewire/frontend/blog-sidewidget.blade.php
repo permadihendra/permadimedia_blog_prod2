@@ -10,7 +10,7 @@
                         <div class="row">
                             <div class="col-lg">
 
-                                <h2 class="card-title h6"><a wire:navigate
+                                <h2 class="card-title h6"><a
                                         class="link-dark link-offset-2 link-underline-opacity-0"
                                         href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h2>
 

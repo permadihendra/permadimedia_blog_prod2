@@ -16,7 +16,9 @@
 
     {{-- Inluce Vite Asset Bundling --}}
     {{-- Default Bootsstrap CSS and JS --}}
-    @vite(['resources/scss/bootstrap.scss', 'resources/js/bootstrap.js'])
+    {{-- @vite(['resources/scss/bootstrap.scss', 'resources/js/bootstrap.js']) --}}
+    <link rel="stylesheet" href="{{ asset('build/assets/bootstrap-Dr0ivd_d.css') }}">
+    <script src="{{ asset('build/assets/bootstrap-BgcDHpuN.js') }}"></script>
 </head>
 
 <body>

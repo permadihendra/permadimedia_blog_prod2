@@ -6,7 +6,7 @@
             <div :key="{{ $article->id }}" class="col-lg-6">
                 <!-- Blog post-->
                 <div wire:ignore.self class="card card-article mb-4">
-                    <a wire:navigate href="{{ url('article/' . $article->slug) }}"><img
+                    <a href="{{ url('article/' . $article->slug) }}"><img
                             class="card-img-top article-list-img"
                             src="{{ asset('storage/backend/images/thumbnails/' . $article->img) }}"
                             alt="{{ $article->title }}" width="300" height="150" /></a>
@@ -16,11 +16,11 @@
                                 class="text-primary">~</span>
                             {{ $article->updated_at->format('M d, Y') }}
 
-                            <h2 class="card-title h4"><a wire:navigate
+                            <h2 class="card-title h4"><a
                                     class="link-dark link-offset-2 link-underline-opacity-0"
                                     href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h2>
                             <p class="card-text mb-1">
-                                {{ Str::limit(strip_tags($article->desc), 150, '...') }}
+                                {!! Str::limit(strip_tags($article->desc), 150, '...') !!}
                             </p>
                         </div>
                         <div class="col">
@@ -30,7 +30,7 @@
                                 </span>
                             </div>
                             <div>
-                                <a wire:navigate class="unstyled-link"
+                                <a class="unstyled-link"
                                     href="{{ url('article/' . $article->slug) }}">Read
                                     more
                                     →</a>

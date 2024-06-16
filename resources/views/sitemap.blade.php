@@ -15,21 +15,21 @@
 
     @foreach ($articles as $article)
         <url>
-            <loc>{{ url('/' . $article->slug) }}</loc>
+            <loc>{{ url('/article/' . $article->slug) }}</loc>
             <lastmod>{{ $article->updated_at->format('Y-m-d') }}</lastmod>
             <changefreq>daily</changefreq>
             <priority>1</priority>
         </url>
     @endforeach
 
-    @foreach ($categories as $category)
+    {{-- @foreach ($categories as $category)
         <url>
             <loc>{{ url('/all-article') }}</loc>
             <lastmod>{{ $category->updated_at->format('Y-m-d') }}</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.8</priority>
         </url>
-    @endforeach
+    @endforeach --}}
 
 
 </urlset>

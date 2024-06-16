@@ -1,12 +1,12 @@
 @section('title', 'permadimedia -' . $article->title)
 
 @push('meta-seo')
-    <meta name="description" content="{{ Str::limit(strip_tags($article->desc), 150, '...') }}">
-    <meta name="keyword" content="{{ $configs['keywords'] }}">
+    <meta name="description" content="{{ $article->title }}">
+    <meta name="keyword" content="{{ $configs['keywords'] }}, {{ $article->title }}">
     <meta property="og:title" content="{{ $article->title }}">
     <meta property="og:site_name" content="permadimedia - blog">
     <meta property="og:url" content="{{ url()->current() }}">
-    <meta property="og:description" content="{{ Str::limit(strip_tags($article->desc), 150, '...') }}">
+    <meta property="og:description" content="{{ $article->title }}">
     <meta property="og:image" content="{{ asset('storage/backend/images/thumbnails/' . $article->img) }}">
 @endpush
 
@@ -20,15 +20,17 @@
                 <span class="text-primary-emphasis">{{ $article->user->name }} </span> <span
                     class="text-primary">~</span>
                 {{ $article->updated_at->format('M d, Y') }}
-                <span class="badge bg-secondary-subtle text-primary-emphasis">
-                    {{ $article->category->name }}
-                </span>
                 <span class="">
                     <i class="fa fa-eye"></i> {{ $article->views }}
                 </span>
             </span>
-            <h2 class="card-title"><a class="link-dark link-offset-2 link-underline-opacity-0"
-                    href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h2>
+            <h1 class="card-title"><a class="link-dark link-offset-2 link-underline-opacity-0"
+                    href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a></h1>
+            
+            <span class="badge bg-secondary-subtle text-primary-emphasis">
+                    {{ $article->category->name }}
+            </span>
+            
             <p class="card-text">
                 {!! $article->desc !!}
             </p>
@@ -71,7 +73,7 @@
                             <div class="row">
                                 <div class="col-lg-9">
 
-                                    <h2 class="card-title h4"><a wire:navigate
+                                    <h2 class="card-title h4"><a
                                             class="link-dark link-offset-2 link-underline-opacity-0"
                                             href="{{ url('article/' . $article->slug) }}">{{ $article->title }}</a>
                                     </h2>
@@ -83,7 +85,7 @@
                                     </span>
 
                                     <p class="card-text mb-1">
-                                        {{ Str::limit(strip_tags($article->desc), 150, '...') }}
+                                        {!! Str::limit(strip_tags($article->desc), 150, '...') !!}
                                     </p>
                                     <div class="col">
                                         <div class="mb-1">
@@ -119,17 +121,23 @@
 </div>
 
 @push('css')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="{{ asset('js/ckeditor4/plugins/codesnippet/lib/highlight/styles/atom-one-dark.min.css') }}">
 @endpush
 
 @push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/go.min.js"></script>
+    <script src="{{ asset('js/ckeditor4/plugins/codesnippet/lib/highlight/highlight.pack.js') }}"></script>
 @endpush
 
+@assets
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet"
+        href="{{ asset('js/ckeditor4/plugins/codesnippet/lib/highlight/styles/atom-one-dark.min.css') }}">
+@endassets
+
 @script
+    <script src="{{ asset('js/ckeditor4/plugins/codesnippet/lib/highlight/highlight.pack.js') }}"></script>
+  
     <script>
-        hljs.highlightAll();
+         hljs.highlightAll();
     </script>
 @endscript

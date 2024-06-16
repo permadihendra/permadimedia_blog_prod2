@@ -15,8 +15,11 @@
     {{-- Default Bootsstrap CSS and JS --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    @vite(['resources/scss/bootstrap.scss', 'resources/js/bootstrap.js'])
-    {{-- <link rel="stylesheet" href="{{ asset('css/blog/custom.css') }}"> --}}
+    {{-- @vite(['resources/scss/bootstrap.scss', 'resources/js/bootstrap.js']) --}}
+    <link rel="preload" as="style" href="{{ asset('build/assets/bootstrap-Dr0ivd_d.css') }}" />
+    <link rel="modulepreload" href="{{ asset('build/assets/bootstrap-BgcDHpuN.js') }}" />
+    <link rel="stylesheet" href="{{ asset('build/assets/bootstrap-Dr0ivd_d.css') }}" data-navigate-track="reload" />
+    <script type="module" src="{{ asset('build/assets/bootstrap-BgcDHpuN.js') }}" data-navigate-track="reload"></script>
 
     @stack('css')
 
