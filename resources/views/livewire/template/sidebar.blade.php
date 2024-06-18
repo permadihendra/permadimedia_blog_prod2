@@ -14,6 +14,12 @@
                 Articles
             </a>
 
+            <a class="nav-link @if (Route::is('tags')) {{ 'active' }} @endif" href="{{ route('tags') }}"
+                wire:navigate>
+                <div class="sb-nav-link-icon"><i class="fas fa-folder"></i></div>
+                Tags
+            </a>
+
             @if (Auth::user()->role->name == 'administrator')
                 <div class="sb-sidenav-menu-heading">Administrator</div>
                 <a class="nav-link @if (Route::is('categories')) {{ 'active' }} @endif"
