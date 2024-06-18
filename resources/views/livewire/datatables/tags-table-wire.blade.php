@@ -35,11 +35,10 @@
                                 <div>
                                     <button wire:click="$parent.edit({{ $tag->id }})"
                                         class="btn btn-outline-primary" data-bs-toggle="modal"
-                                        data-bs-target="#editTag">Edit</button>
+                                        data-bs-target="#editTags">Edit</button>
                                     <button type="button" wire:click="$parent.delete({{ $tag->id }})"
                                         wire:confirm ="Are you sure want to delete this Tag ? : {{ $tag->name }}"
-                                        class="btn btn-outline-danger" data-bs-toggle="modal"
-                                        data-bs-target="#deleteTag">Delete</button>
+                                        class="btn btn-outline-danger">Delete</button>
                                 </div>
                             </td>
 

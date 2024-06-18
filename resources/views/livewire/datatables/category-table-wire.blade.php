@@ -40,8 +40,7 @@
                                         data-bs-target="#editCategory">Edit</button>
                                     <button type="button" wire:click="$parent.delete({{ $category->id }})"
                                         wire:confirm ="Are you sure want to delete this category ? : {{ $category->name }}"
-                                        class="btn btn-outline-danger" data-bs-toggle="modal"
-                                        data-bs-target="#deleteCategory">Delete</button>
+                                        class="btn btn-outline-danger">Delete</button>
                                 </div>
                             </td>
 

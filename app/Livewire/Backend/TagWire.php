@@ -30,6 +30,38 @@ class TagWire extends Component
         return $this->redirect('tags', navigate: true);
     }
 
+    public function edit($id)
+    {
+        $tag = Tag::findOrFail($id);
+        $this->tagsId = $tag->id;
+        $this->name = $tag->name;
+    }
+
+    public function update($id)
+    {
+        $tag = Tag::findOrFail($id);
+        $tag->name = Str::lower($this->name);
+        $tag->save();
+
+        session()->flash('successUpdate', 'Tag is updated sucessfully.');
+
+        return $this->redirect('tags', navigate: true);
+    }
+
+    public function delete($id)
+    {
+        Tag::destroy($id);
+
+        session()->flash('successDelete', 'Tag is deleted sucessfully.');
+
+        return $this->redirect('tags', navigate: true);
+    }
+
+    public function cancel()
+    {
+        return $this->redirect('tags', navigate: true);
+    }
+
     #[Layout('components.layouts.template')]
     public function render()
     {

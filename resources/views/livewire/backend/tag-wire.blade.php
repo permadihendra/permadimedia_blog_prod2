@@ -54,7 +54,7 @@
     <x-partial.modal-edit title="Edit tags" dataTarget="editTags">
 
         <div class="mb-3 row">
-            <label for="tagsId" class="col-sm-4 col-form-label">Category ID</label>
+            <label for="tagsId" class="col-sm-4 col-form-label">Tag ID</label>
             <div class="col-sm-8">
                 <input type="text" class="form-control" id="tagsId" name="tagsId" wire:model="tagsId" disabled>
 
